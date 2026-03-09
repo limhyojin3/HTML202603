@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, th, td {
+            border : 2px solid black; /* 2px 크기의 검은색 선(solid)*/
+            border-collapse: collapse;  /* 겹치는 선을 하나로 만들어주는 속성이다*/
+            padding : 5px 20px; /* 상하 5px 좌우 20px*/
+            text-align: center;  /*가운데 정렬*/
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>방 이름</th>
+            <th>대상</th>
+            <th>크기</th>
+            <th>가격</th>
+        </tr>
+
+        <tr>
+            <td>유채방</td>
+            <td>여성도미토리</td>
+            <td rowspan="3">4인실</td>
+            <td rowspan="4">1인20,000원</td>
+        </tr>
+
+        <tr>
+            <td rowspan="2">동백방</td>
+            <td>동성도미토리</td>
+        </tr>
+
+        <tr>
+            <td>가족1팀</td>
+        </tr>
+        
+        <tr>
+            <td>천혜향방</td>
+            <td>-</td>
+            <td>2인실</td>
+        </tr>
+
+        <tr>
+            <td colspan="4">바깥채 전체를 렌트합니다.</td>
+        </tr>
+
+
+    </table>
+</body>
+</html>

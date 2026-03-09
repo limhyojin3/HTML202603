@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, th, td {
+            border : 2px solid black; /* 2px 크기의 검은색 선(solid)*/
+            border-collapse: collapse;  /* 겹치는 선을 하나로 만들어주는 속성이다*/
+            padding : 5px 20px; /* 상하 5px 좌우 20px*/
+            text-align: center;  /*가운데 정렬*/
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1">  
+        <tr>                              <!-- tr 태그 : 행을 나타냄-->
+            <th>이름</th>
+            <th>자바</th>
+            <th colspan="2">오라클+HTML</th>
+                             <!-- th 태그 : 테이블 가장 윗줄에 있는 행에 주로 사용 => 헤더가됨.(굵은글씨)-->
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>85</td>
+            <td>90</td>
+            <td>95</td>
+        </tr>
+        <tr>
+            <td>김철수</td>
+            <td>95</td>
+            <td>90</td>
+            <td>90</td>
+        </tr>
+    </table>
+</body>
+</html>

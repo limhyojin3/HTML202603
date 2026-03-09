@@ -1,0 +1,14 @@
+div {
+    color : green;
+}
+#title {
+    font-weight: bold;
+    font-size: 30px;
+    color: blue;
+}
+.subject {
+    font-style: italic;
+}
+.core {
+    text-decoration: underline;
+}
