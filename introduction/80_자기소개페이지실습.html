@@ -8,6 +8,9 @@
         #container{
             width: 1300px;
             margin: 5px auto;
+            box-shadow: 2px 2px 5px #746f6f;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         #header{
@@ -83,20 +86,25 @@
             /* margin: 5px auto; */
             padding-top:20px;
         }
-        #sns_button{
-            width: 100px;
-            height: 50px;
-            border-radius: 30%;
-            border-color: blue;
-            background-color: rgb(255, 255, 255);
-            font-size: 15px;
+
+        #sns_button_box a{
+            display: inline-block;
+            background: white;
+            color: rgb(86,86,233);
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
             font-weight: bold;
         }
+        #sns_button_box a:hover{
+            background: #eee;
+        }
+
         .contact{
             padding-left: 20px;
         }
         .edu_table{
-            border : 2px solid black; /* 2px 크기의 검은색 선(solid)*/
+            border : 1px solid #ddd; /* 2px 크기의 검은색 선(solid)*/
             border-collapse: collapse;  /* 겹치는 선을 하나로 만들어주는 속성이다*/
             padding : 5px 20px; /* 상하 5px 좌우 20px*/
             text-align: center;  /*가운데 정렬*/
@@ -135,7 +143,8 @@
                 <h4 class="contact">✉ 이메일 : <br> gildong@computer.com</h4>
             </div>
             <div id="sns_button_box">
-                <input id="sns_button" type="button" value="sns로 이동!" href="">
+                <!-- <input id="sns_button" type="button" value="sns로 이동!" href=""> -->
+                <a href="#">sns로 이동!</a>
             </div>
         </div>
         <div id="contents">
