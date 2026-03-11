@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 1150px;
+            margin : 50px auto;
+        }
+        .card{
+            position: relative;
+            width: 550px;
+            height: 250px;
+            margin: 10px;
+            border : 2px solid black;
+            box-sizing: border-box;
+            background-color: rgb(243, 243, 228);
+            float: left;
+        }
+        img {
+            width: 270px;
+            height: 250px;
+        }
+        .word{
+            position: absolute;
+            left : 310px;
+            top : 60px;
+            text-align: center;
+            width: 200px;
+        }  /* word 의 부모는 card */
+        @media screen and (max-width : 1100px) {
+            #container {
+                width:600px;
+            }   
+            .card {
+                clear: both;
+            } /*position: relative를 clear: both 하면  static(디폴트)상태가 됨 */
+        }
+        @media screen and (max-width : 600px) {
+            #container {
+                width:350px;
+            }   
+            .card {
+                width:270px;
+                height:500px; 
+            }
+            .word { 
+                left:40px;
+                top:300px;     
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="card">
+            <img src="../media/실습 햄스터.jpg">
+            <div class="word">  <!--word의 부모는 card-->
+                <h2>아유... 하기 싫어</h2>
+                <h3>- 해므 - </h3>
+            </div>
+        </div>
+        <div class="card">
+            <img src="../media/실습 고양이.jpg">
+            <div class="word">
+                <h2>그냥 놀고 싶다</h2>
+                <h3>- 고양 - </h3>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
