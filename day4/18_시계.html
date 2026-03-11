@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #container{
+            width: 400px;
+            height: 20px auto;
+        }
+
+        #time{
+            font-size: 50px;
+            font-weight: bold;
+            color: blue;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="time"></div>
+    </div>
+</body>
+</html>
+<script>
+    setInterval(()=>{             // setInterval => 정해진시간마다 반복되어 갱신됨
+        let datetime = new Date();
+        let obj = document.querySelector("#time");
+
+        let seconds = datetime.getSeconds();
+
+        if (datetime.getSeconds() < 10) {
+            seconds = "0" + datetime.getSeconds();
+        } 
+
+        let time = datetime.getHours() + " : "
+                    + datetime.getMinutes() + " : "
+                    + seconds;
+
+        obj.innerHTML = time;
+    }, 1000); //1초마다 반복하여 갱신
+</script>

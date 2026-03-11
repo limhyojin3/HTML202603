@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 800px;
+            margin: 10px auto;
+        }
+        .txt{
+            color:rgb(18, 88, 88);
+            font-size: 30px;
+            font-weight: bold;
+            font-style: italic;
+            text-decoration: underline;
+            text-align: center;       /* 여기까지 자주쓰임 */
+            text-shadow: 2px 2px 2px blueviolet;
+        }
+        .box1{
+            border : 2px solid black;
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+            border-radius: 20px;
+        }
+
+        .box2{
+            width: 600px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding:30px 0 /* 위아래 30px  */
+        }
+
+        .temp1{
+            border : 2px solid black;
+            width: 200px;
+            height: 200px;
+        }
+
+        /* width, height 값을 줄수있다 => div (블록속성==한줄 차지),  줄수없다 => span  (인라인속성== 자기크기만큼만 차지) */
+        /* 블록속성, 인라인속성 모두 만족하는 애가있음 => float 인듯? */
+
+    </style>
+</head>
+<body>
+    <div id="container">  <!--가운데정렬용-->
+        <!-- text css 속성-->
+        <div class="txt">HTML</div>   
+        <hr>
+        <div class="box1"></div>  
+        <br>
+        <!-- <span class="temp1">span태그!!</span> -->
+         <div class="box2">
+            HTML JAVASCRIPT
+         </div>
+    </div>
+</body>
+</html>
