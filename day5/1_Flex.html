@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 900px;
+            border : 2px solid black;
+            background-color: #eee;
+            display: flex;
+        }
+        .box{
+            width: 100px;
+            margin : 5px;
+            padding:10px 20px; /*상하 좌우*/
+            background-color: blue;
+            color: white;
+            text-align: center;
+        }
+        .dir1{
+            /* 디폴트. 왼쪽에서 오른쪽으로 정렬*/
+            flex-direction: row;
+        }
+        .dir2{
+            /* 오른쪽에서 왼쪽으로 */
+            flex-direction: row-reverse;
+        }
+        .dir3{
+            flex-direction: column;
+        }
+
+        .dir4{
+            flex-direction: column-reverse;
+        }
+    </style>
+</head>
+<body>
+    <!--flex-->
+    <!-- 부모 요소, 자식요소 -->
+    <!-- 부모 요소 : flex를 설정하는 컨테이너 -->
+    <!-- 자식 요소 : 부모의 flex 규칙에 따라 정렬되는 아이템-->
+    <div id="container" class="dir3">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+    </div>
+</body>
+</html>
