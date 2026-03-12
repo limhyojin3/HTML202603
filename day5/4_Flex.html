@@ -9,9 +9,9 @@
             /* width: 900px; */
             border : 2px solid black;
             background-color: #eee;
-            display: flex;
+            display: flex;         /*container 는 부모*/
         }
-        .box{
+        .box{   /* box는 자식*/
             width: 100px;
             margin : 5px;
             padding : 10px 20px;
@@ -29,9 +29,9 @@
             /* 오른쪽에서 왼쪽 */
             justify-content: flex-end;
         }
-        .order3{
+        .order3{     /*order 도 부모!!*/
             /* 중앙을 기준으로 배치(간격 x) */
-            justify-content: center;           /* 부모가 display: flex; 자식은 justify-content 와 쓰임!*/
+            justify-content: center;           /* (매우 꿀팁!) : 부모에 display: flex; & justify-content 선언! => 선언은 부모요소에!, 적용은 자식요소에 */
         }
         .order4{
             /* 양쪽 끝에 배치한 후 같은 간격으로 배치 */
