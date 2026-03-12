@@ -31,15 +31,16 @@
             /* display: flex; */
             gap:10px;
             /* flex-wrap: wrap; */
-            display: grid;
-            /* 200px 이상일 때 가로로 반복, 남는 공간 1fr씩 채움 */
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            grid-auto-rows: 150px;            
+            display: grid;          /* content 도 display: grid 선언! */
+            /* 200px 이상일 때 가로로 반복, 남는 공간 1fr 채움 */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 열의 너비 최소200px, 나머지1fr*/
+            grid-auto-rows: 150px;    /* 행의 높이 150px로 고정*/        
 
-
+            /*비교용*/
+            /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
 
             /* !!꿀팁!! : flex => wrap 이 유용하고
-                          Grid => auto-fill 이 유용하다!*/
+                          Grid => auto-fix 가 유용하다!*/
         
         
         
@@ -49,7 +50,7 @@
         }
         .wizet{
             /* width: 200px;
-            height: 200px; */
+            height: 200px; */   /*부모가 grid로 배치해준다. 자식은 크기 신경안써도됨! */
             border:1px solid black;
             padding: 5 px 10px;
             text-align: center;
@@ -68,7 +69,7 @@
             "side"
             "content"
             "footer";
-        }
+            }
         }
     </style>
 </head>

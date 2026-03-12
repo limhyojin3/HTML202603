@@ -20,6 +20,7 @@
             text-align: center;
             
         }
+                                                      /* 옆으로 정렬 : justify-content */
         .order1{
             /* 디폴트, 왼쪽에서 오른쪽으로 정렬 */
             justify-content: flex-start;
@@ -30,11 +31,11 @@
         }
         .order3{
             /* 중앙을 기준으로 배치(간격 x) */
-            justify-content: center;
+            justify-content: center;           /* 부모가 display: flex; 자식은 justify-content 와 쓰임!*/
         }
         .order4{
             /* 양쪽 끝에 배치한 후 같은 간격으로 배치 */
-            justify-content: space-between;
+            justify-content: space-between;    /* 이것도 쓰임 좋아!*/
         }
         .order5{
             /* 양쪽 끝에 약간의 여유를 둔 후 같은 간격으로 배치 */

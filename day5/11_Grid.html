@@ -5,31 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #container{
+        #container > div{    /*자식인 div만 해당!*/
+            border : 1px solid black;
+            text-align: center;
+            padding : 10px;
+        }
+
+        #container {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            grid-template-rows: 150px minmax(600px, auto) 150px;
-            grid-template-areas: 
+            gap : 10px;
+            grid-template-columns: 200px 1fr;  /*열은 2개, 하나는 200px, 나머지 1fr*/
+            grid-template-rows: 150px minmax(600px, auto) 150px;  /*행은 3개, 높이가 각각 150px, minmax, 150px*/
+                                                                  /* minmax(600px, auto) => 최소 높이가 600px, 최대는 auto*/
+            grid-template-areas:  /* 부모에서 grid 자리배치 선언 !*/
             "header header"
             "side content"
             "footer footer";
-            gap:20px;
         }
 
-        #container > div{
-            border : 1px solid black;
-            text-align: center;
-            padding:10px;
-        }
-        .header{grid-area:header;}
-        .side{grid-area:side;}
-        .content{grid-area:content;}
-        .footer{grid-area:footer;}
+        .header {grid-area: header;}   /*자식에서 grid-area 선언해줘야함!*/
+        .side {grid-area: side;}
+        .content {grid-area: content;}
+        .footer {grid-area: footer;}
     </style>
 </head>
 <body>
-    <div id="container">
-        <div class="header">헤더다~~</div>
+    <div id="container">         <!-- div 선언만 해주고 배치는 CSS GRID가 담당함-->
+        <div class="header">헤더다~~~</div>
         <div class="side">사이드!!</div>
         <div class="content">컨텐츠!!</div>
         <div class="footer">푸터~~</div>

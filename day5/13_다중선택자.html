@@ -19,16 +19,23 @@
 </html>
 <script>
     function fnColor(){
-        let objList = document.querySelectorAll(".subject");
-        // console.log(objList);
+        let objList = document.querySelectorAll(".subject");  //NodeList
+                //querySelectorAll => class처럼 여러개값이 있을때
+
+        console.log(objList);  // => NodeList가 나온다
+
+        //--랜덤한 rgb 값을 줘서 랜덤한 컬러가 나오게 하고싶다!--
 
         for(let i = 0; i < objList.length; i++){
-            console.log(objList[i]);
+            console.log(objList[i]);  //자바,오라클,HTML,Javascript
+
             Math.floor(Math.random()*10); //Math.random()=> 0~1미만 랜덤한 실수
 
+            //(Math.random()*256) => 0~256 미만의 실수
             let r = Math.floor(Math.random()*256); 
             let g = Math.floor(Math.random()*256); 
             let b = Math.floor(Math.random()*256);
+            
             objList[i].style.color = `rgb(${r},${g},${b})`; 
         }
     }

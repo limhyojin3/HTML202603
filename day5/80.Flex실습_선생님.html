@@ -32,10 +32,10 @@
         }
         .navbar {
             background-color: white;
-            padding: 20px 30px;  
+            padding: 20px 30px;  /*상하 20px여백, 좌우30px여백 */
             box-shadow: 0 2px 4px #eee;
             display: flex;
-            justify-content: space-between; /* 양쪽 끝으로 */
+            justify-content: space-between; /* 자식요소를 양쪽 끝으로 */
            
         }
         .card-container {                 /* flex <<*/
@@ -54,7 +54,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
             display: flex;          /* flex <<*/
-            flex-direction: column; /* 세로 배치 */
+            flex-direction: column; /* 세로 배치 !! <= 자주 안해본거네!*/
         }
         img {
             width: 200px;
@@ -86,6 +86,9 @@
         .buy-btn:hover {
             background: #0056b3;
         }
+
+        /* (꿀팁!) : 패딩은 안쪽영역에서(여백),   마진은 바깥쪽 영역과
+                     패딩 , 마진은 젤 나중에  적용!! (한꺼번에 생각하면 골치아픔!!) */
     </style>
 </head>
 <body>

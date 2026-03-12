@@ -8,47 +8,51 @@
         #container{
             width: 800px;
             display: grid;
-            grid-template-columns: repeat(3,1fr);
-            grid-template-rows: repeat(3,100px);
+            grid-template-columns: repeat(3, 1fr); /*열의개수가3개, 너비가 1fr씩*/
+            grid-template-rows: repeat(3, 100px); /*행의개수가 3개, 높이 100px씩*/
             grid-template-areas: 
             "g-box g-box g-box"
+            "b-box o-box o-box"
+            "b-box p-box r-box";
+            gap : 10px;
             
-            ;
-            
-            
-        }
+        }                                        /* CSS 는 꾸미기만 하는게 아니라 배치라는 훌륭한 일도 함! */
         .box{
-            border:1px solid black;
-            padding: 5px 10px;
+            border : 1px solid black;
+            padding : 5px 10px;
             text-align: center;
             font-size: 15px;
         }
-        .green-box{
+        .green-box {
             background-color: green;
-            grid-area: g-box;
+            grid-area: g-box;  /* 부모가 grid-template-areas 선언했고, 자식에서 grid-area 정해줘야함!*/
         }
-        .blue-box{
+        .blue-box {
             background-color: blue;
             grid-area: b-box;
         }
-        .orange-box{
+        .orange-box {
             background-color: orange;
             grid-area: o-box;
+
         }
         .purple-box{
             background-color: purple;
-
+            grid-area: p-box;
         }
-
+        .red-box{
+            background-color: red;
+            grid-area: r-box;
+        }
     </style>
 </head>
 <body>
-    <div id="container">
+    <div id="container">           <!-- div 선언만 하고, ★ 자리는 CSS GRID가 배치해줌 ! ★-->
         <div class="box green-box">1</div>
         <div class="box blue-box">2</div>
         <div class="box orange-box">3</div>
         <div class="box purple-box">4</div>
-        <div class="red- box"s>5</div>
+        <div class="box red-box">5</div>
     </div>
 </body>
 </html>

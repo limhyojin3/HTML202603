@@ -6,33 +6,40 @@
     <title>Document</title>
     <style>
         #container{
-            width: 800px;
+            /* width: 800px; */
             display: grid;
-            border:1px solid #ccc;
-            /* auto-fit*/
-            /* 전체 크기에 맞춰서 요소들을 꽉 채움*/
-            /* grid-template-columns: repeat(auto-fit,minmax(100px, 1fr)); */
+            border : 1px solid #ccc;
+            box-sizing: border-box;
+
+            /* auto-fit */
+            /* => 전체 크기에 맞춰서 요소들을 꽉 채움 */
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            gap : 10px;    /* 열의 너비 최소 150px, 최대 나머지(1fr), auto-fit 이니까 빈공간 없이 핏하게됨 */
             
             /* auto-fill */
-            /* 최소 크기에 맞춰서 채움, 빈공간 있으면 그대로 둔다*/
-            grid-template-columns: repeat(auto-fill,minmax(100px, 1fr));
-            
+            /* => 최소 크기에 맞춰서 채움, 빈공간 있으면 그대로 둔다. */
+            /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
+                           /* 열의 너비 최소 100px, 나머지(1fr) 굳이 빈공간 안채우고 냅둔다 */
         }
         .box{
-            border:1px solid black;
-            padding: 5 px 10px;
+            border : 1px solid black;
+            padding : 5px 10px;
             text-align: center;
+            font-size: 15px;
+        }
+        .box:nth-child(odd){
+            background-color: aquamarine;
         }
     </style>
 </head>
 <body>
     <div id="container">
-        <div class="box1"></div>
-        <div class="box2"></div>
-        <div class="box3"></div>
-        <div class="box4"></div>
-        <div class="box5"></div>
-        <div class="box6"></div>
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
     </div>
 </body>
 </html>

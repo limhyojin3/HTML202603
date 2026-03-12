@@ -8,39 +8,45 @@
         #container{
             width: 800px;
             display: grid;
-            grid-template-columns: repeat(3,1fr);
-            grid-template-rows: repeat(3,100px);
+            grid-template-columns: repeat(3, 1fr); /*3개의열, 너비는 각각 1fr(fraction)*/  
+            grid-template-rows: repeat(4, 100px);  /*4개의 행, 행의높이는 각각 100px*/
+                                                   /*현재 예제에서는 눈에 안보이지만 행이 4개 맞음. */
+                                                   /* f12 관리자도구에서 grid 누르면 쉽게 확인가능 */
             
         }
         .box{
-            border:1px solid black;
-            padding: 5px 10px;
+            border : 1px solid black;
+            padding : 5px 10px;
             text-align: center;
             font-size: 15px;
         }
-        .green-box{
+        .green-box {
             background-color: green;
-            grid-column: 1/3;
+            grid-column: 1/-1; /* 1/4 */
+            grid-row: 1/2;
         }
-        .blue-box{
+        .blue-box {
             background-color: blue;
-            /* grid-row-start: 4; */
-            grid-row: 1/3;
+            grid-row : 2/4;
+        }
+        .orange-box {
+            background-color: orange;
+            grid-column: 2/4;
 
         }
-        .orange-box{
-            background-color: orange;
+        .purple-box{
+            background-color: purple;
         }
+        /* 순차적으로 자리차지한다. 그리고, 아무것도 안적혀있으면 한칸씩만 가져가는거 */
     </style>
 </head>
-<body> 
+<body>
     <div id="container">
         <div class="box green-box">1</div>
         <div class="box blue-box">2</div>
-        <div class="box">3</div>
-        <div class="box">4</div>
+        <div class="box orange-box">3</div>
+        <div class="box purple-box">4</div>
         <div class="box">5</div>
     </div>
-    
 </body>
 </html>
