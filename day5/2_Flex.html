@@ -6,10 +6,11 @@
     <title>Document</title>
     <style>
         #container{
-            width: 900px;
+            /* width: 900px; */
             border : 2px solid black;
             background-color: #eee;
             display: flex;
+            justify-content: row;
         }
         .box{
             width: 100px;
@@ -18,56 +19,43 @@
             background-color: blue;
             color: white;
             text-align: center;
+            
         }
-        .dir1{
-            /* 디폴트. 왼쪽에서 오른쪽으로 정렬 */
-            flex-direction: row;
+        .wrap1{
+            /* 디폴트, 한줄에 표시 */
+            flex-wrap: nowrap;
         }
-        .dir2{
-            /* 오른쪽에서 왼쪽으로 */
-            flex-direction: row-reverse;
+        .wrap2{
+            /* 여러줄에 표시 */
+            flex-wrap: wrap;
         }
-        .dir3{
-            flex-direction : column;
-        }
-        .dir4{
-            flex-direction : column-reverse;
+        .wrap3{
+            /* 여러줄에 표시 */
+            flex-wrap: wrap-reverse;
         }
     </style>
 </head>
 <body>
-    <!-- flex -->
-    <!-- 부모 요소, 자식 요소 -->
-    <!-- 부모 요소 : flex를 설정하는 컨테이너 -->
-    <!-- 자식 요소 : 부모의 flex 규칙에 따라 정렬되는 아이템 -->
-    <div id="container" class="dir1">
+    <div id="container" class="wrap1">
         <div class="box">1</div>
         <div class="box">2</div>
         <div class="box">3</div>
         <div class="box">4</div>
         <div class="box">5</div>
     </div>
-    <div id="container" class="dir2">
+    <div id="container" class="wrap2">
         <div class="box">1</div>
         <div class="box">2</div>
         <div class="box">3</div>
         <div class="box">4</div>
         <div class="box">5</div>
     </div>
-    <div id="container" class="dir3">
+    <div id="container" class="wrap3">
         <div class="box">1</div>
         <div class="box">2</div>
         <div class="box">3</div>
         <div class="box">4</div>
         <div class="box">5</div>
     </div>
-    <div id="container" class="dir4">
-        <div class="box">1</div>
-        <div class="box">2</div>
-        <div class="box">3</div>
-        <div class="box">4</div>
-        <div class="box">5</div>
-    </div>
-
 </body>
 </html>

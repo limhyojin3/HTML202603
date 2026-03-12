@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 1300px;
+            margin: 200px auto;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+        }
+        .card{
+            width: 300px;
+            height: 500px;
+            border: 1px solid black;
+            float:left;
+            margin-right: 100px;
+            /* position: relative; */
+            box-sizing: border-box;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .media{
+            width: 200px;
+            height: 200px;
+            margin: 30px 0 0 50px;
+            border-radius: 10px;
+        }
+        .detail{
+            margin-left: 20px; 
+        }
+        .buyButton{
+            padding: 5px 80px 5px 80px;
+            border-radius: 5px;
+            text-decoration: none;
+            /* height: */
+            margin-left: 20px; 
+            background-color: rgb(17, 0, 255);
+            color:white;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="card">
+            <img src="../media/실습 토끼.jpg" class="media">
+            <div class="detail">
+                <h3>상품 A</h3>
+                <p>이 상품은~</p>
+            </div>
+            <a class="buyButton" href="">구매하기</a>
+        </div>    
+        <div class="card">
+            <img src="../media/실습 강아지.jpg" class="media">
+            <div class="detail">
+                <h3>상품 B</h3>
+                <p>이 상품은~</p>
+            </div>
+            <a class="buyButton" href="">구매하기</a>
+        </div>
+        <div class="card">
+            <img src="../media/실습 햄스터.jpg" class="media">
+            <div class="detail">
+                <h3>상품 C</h3>
+                <p>이 상품은~</p>
+            </div>
+            <a class="buyButton" href="">구매하기</a>
+        </div>
+    </div>
+
+    <!-- <div style="margin-bottom: 200px;"></div> -->
+</body>
+</html>

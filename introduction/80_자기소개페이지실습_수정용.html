@@ -225,6 +225,9 @@
             <div id="watch_container">
                 <div id="time"></div>
             </div>
+            <div>
+                <a href="javascript:;"> 토이프로젝트 보러가기</a>
+            </div>
         </div>
         <div id="footer">
             정보넣고 이거저거
@@ -242,14 +245,12 @@
         let seconds = datetime.getSeconds();
         
 
-        if (datetime.getMinutes() < 10) {
-            minutes = "0" + datetime.getMinutes();
-        }
-        
         if (datetime.getSeconds() < 10) {
             seconds = "0" + datetime.getSeconds();
         } 
-        
+        if (datetime.getMinutes() < 10) {
+            seconds = "0" + datetime.getSeconds();
+        }
 
         let time = datetime.getHours() + " : "
                     + minutes + " : "

@@ -6,7 +6,8 @@
     <title>Document</title>
     <style>
         #container{
-            width: 900px;
+            /* width: 900px; */
+            height: 200px;
             border : 2px solid black;
             background-color: #eee;
             display: flex;
@@ -18,56 +19,47 @@
             background-color: blue;
             color: white;
             text-align: center;
+            
         }
-        .dir1{
-            /* 디폴트. 왼쪽에서 오른쪽으로 정렬 */
-            flex-direction: row;
+        .order1{
+            align-items: flex-start;
         }
-        .dir2{
-            /* 오른쪽에서 왼쪽으로 */
-            flex-direction: row-reverse;
+        .order2{
+            align-items: flex-end;
         }
-        .dir3{
-            flex-direction : column;
-        }
-        .dir4{
-            flex-direction : column-reverse;
+        .order3{
+            align-items: center;
         }
     </style>
 </head>
 <body>
-    <!-- flex -->
-    <!-- 부모 요소, 자식 요소 -->
-    <!-- 부모 요소 : flex를 설정하는 컨테이너 -->
-    <!-- 자식 요소 : 부모의 flex 규칙에 따라 정렬되는 아이템 -->
-    <div id="container" class="dir1">
+    <div id="container" class="order1">
         <div class="box">1</div>
         <div class="box">2</div>
         <div class="box">3</div>
         <div class="box">4</div>
         <div class="box">5</div>
     </div>
-    <div id="container" class="dir2">
+    <div id="container" class="order2">
         <div class="box">1</div>
         <div class="box">2</div>
         <div class="box">3</div>
         <div class="box">4</div>
         <div class="box">5</div>
     </div>
-    <div id="container" class="dir3">
+    <div id="container" class="order3">
         <div class="box">1</div>
         <div class="box">2</div>
         <div class="box">3</div>
         <div class="box">4</div>
         <div class="box">5</div>
     </div>
-    <div id="container" class="dir4">
-        <div class="box">1</div>
+    <!-- <div id="container" class="order3">
+        <div class="box" style="font-size: 30px;">1</div>
         <div class="box">2</div>
-        <div class="box">3</div>
+        <div class="box" style="font-size: 50px;">3</div>
         <div class="box">4</div>
         <div class="box">5</div>
-    </div>
-
+    </div> -->
 </body>
 </html>
