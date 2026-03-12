@@ -238,14 +238,18 @@
         let datetime = new Date();
         let obj = document.querySelector("#time");
 
+        let minutes = datetime.getMinutes();
         let seconds = datetime.getSeconds();
 
         if (datetime.getSeconds() < 10) {
             seconds = "0" + datetime.getSeconds();
         } 
+        if (datetime.getMinutes() < 10) {
+            seconds = "0" + datetime.getSeconds();
+        }
 
         let time = datetime.getHours() + " : "
-                    + datetime.getMinutes() + " : "
+                    + minutes + " : "
                     + seconds;
 
         obj.innerHTML = time;
