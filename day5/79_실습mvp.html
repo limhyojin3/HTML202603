@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            display: grid; /* 그리드 컨테이너 정의 */
+            grid-template-columns: 300px 1fr;
+            grid-template-rows: 150px minmax(600px, auto) 150px;
+            gap: 10px; /* 행과 열 사이 간격 */
+            grid-template-areas: 
+            "header header"
+            "side content"
+            "footer footer";
+        }   
+        #container > div{
+            border : 1px solid black;
+            /* text-align: center; */
+            padding:30px;
+        }
+        .header{
+            grid-area:header;
+        }
+        .side{
+            grid-area:side;
+        }
+        .content{
+            grid-area:content;
+            /* display: flex; */
+            gap:10px;
+            /* flex-wrap: wrap; */
+            display: grid;
+            /* 200px 이상일 때 가로로 반복, 남는 공간 1fr씩 채움 */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-auto-rows: 150px;            
+
+
+
+            /* !!꿀팁!! : flex => wrap 이 유용하고
+                          Grid => auto-fill 이 유용하다!*/
+        
+        
+        
+        }
+        .footer{
+            grid-area:footer;
+        }
+        .wizet{
+            /* width: 200px;
+            height: 200px; */
+            border:1px solid black;
+            padding: 5 px 10px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            body {
+                background-color: lightblue;
+            }
+            #container {
+            display: grid; /* 그리드 컨테이너 정의 */
+            grid-template-columns: 1fr;
+            grid-template-rows: 150px 150px minmax(600px, auto) 150px;
+            gap: 10px; /* 행과 열 사이 간격 */
+            grid-template-areas: 
+            "header"
+            "side"
+            "content"
+            "footer";
+        }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="header">헤더다~~</div>
+        <div class="side">사이드!!</div>
+        <div class="content">
+            <div class="wizet">
+                <h5>위젯1</h5>
+                <p>방문자수:1,234명</p>
+            </div>
+            <div class="wizet">
+                <h5>위젯1</h5>
+                <p>방문자수:1,234명</p>
+            </div>
+            <div class="wizet">
+                <h5>위젯1</h5>
+                <p>방문자수:1,234명</p>
+            </div>
+            <div class="wizet">
+                <h5>위젯1</h5>
+                <p>방문자수:1,234명</p>
+            </div>
+            <div class="wizet">
+                <h5>위젯1</h5>
+                <p>방문자수:1,234명</p>
+            </div>
+        </div>
+        <div class="footer">푸터~~</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="subject">자바</div>
+    <div class="subject">오라클</div>
+    <div class="subject">HTML</div>
+    <div class="subject">Javascript</div>
+    <div>
+        <button onclick="fnColor()">클릭!</button>
+    </div>
+</body>
+
+
+</html>
+<script>
+    function fnColor(){
+        let objList = document.querySelectorAll(".subject");
+        // console.log(objList);
+
+        for(let i = 0; i < objList.length; i++){
+            console.log(objList[i]);
+            Math.floor(Math.random()*10); //Math.random()=> 0~1미만 랜덤한 실수
+
+            let r = Math.floor(Math.random()*256); 
+            let g = Math.floor(Math.random()*256); 
+            let b = Math.floor(Math.random()*256);
+            objList[i].style.color = `rgb(${r},${g},${b})`; 
+        }
+    }
+</script>

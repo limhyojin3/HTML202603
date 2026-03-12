@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    ><style>
+    <style>
         #container{
             width: 800px;
             display: grid;
             border:1px solid #ccc;
             /* auto-fit*/
             /* 전체 크기에 맞춰서 요소들을 꽉 채움*/
-            /* grid-template-columns: repeat(auto-fit,miamax(100px, 1fr)); */
+            /* grid-template-columns: repeat(auto-fit,minmax(100px, 1fr)); */
             
             /* auto-fill */
             /* 최소 크기에 맞춰서 채움, 빈공간 있으면 그대로 둔다*/
-            grid-template-columns: repeat(auto-fill,miamax(100px, 1fr));
+            grid-template-columns: repeat(auto-fill,minmax(100px, 1fr));
+            
         }
         .box{
             border:1px solid black;

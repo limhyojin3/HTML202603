@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 1300px;
+            margin: 5px auto;
+            box-shadow: 2px 2px 5px #746f6f;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #header{
+            padding: 10px;
+            width: 100%;
+            height: 150px;
+            background-color: rgb(189, 220, 255);
+            text-align: right;
+            font-weight: bold;
+            padding-right: 50px;
+            color:rgb(40, 0, 78);
+
+            box-sizing: border-box;
+        }
+
+        #contents{
+            width: 60%;
+            height: 1000px;
+            border: 2px solid black;
+            padding-left: 30px;
+            background-color: rgb(255, 255, 255);
+            float:left;
+
+            box-sizing: border-box;  /* 패딩이나 border를 합쳐서 크기를 맞춰준다. (중요)*/
+            
+        }
+        #sidebar_left{
+            width: 20%;
+            height: 1000px;
+            background-color: rgb(234, 217, 255);
+            float:left;
+            padding: 10px;
+
+            box-sizing: border-box;
+            
+        }
+
+        #sidebar_right{
+            padding: 10px;
+            width: 20%;
+            height: 1000px;
+            background-color: rgb(255, 247, 158);
+            float:left;                 /* 내가 좋아하는 한페이지에 구성 다보이는거*/
+            box-sizing: border-box;
+        }
+        #footer{
+            width: 100%;
+            height: 150px;
+            background-color: rgb(192, 255, 168);
+            clear: both;
+        }
+        #profile{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border:1px solid black;
+            background-image: url(실습\ 햄스터.jpg);
+            background-size: 200px;
+            background-position: center;
+            
+            margin-left:40px;
+            margin-top: 40px;
+        }
+        #profile:hover{
+            background-image: url(실습\ 고양이.jpg);
+        }
+        #profile_name{
+            text-align: center;
+            
+        }
+        #sns_button_box{
+            text-align: center;
+            /* margin: 5px auto; */
+            padding-top:20px;
+        }
+
+        #sns_button_box a{
+            display: inline-block;
+            background: white;
+            color: rgb(86,86,233);
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        #sns_button_box a:hover{
+            background: #eee;
+        }
+
+        .contact{
+            padding-left: 20px;
+        }
+        .edu_table{
+            border : 1px solid #ddd; /* 2px 크기의 검은색 선(solid)*/
+            border-collapse: collapse;  /* 겹치는 선을 하나로 만들어주는 속성이다*/
+            padding : 5px 20px; /* 상하 5px 좌우 20px*/
+            text-align: center;  /*가운데 정렬*/
+            margin-left:30px;
+            margin-top: 30px;
+        }
+        #edu_th{
+            background-color: rgb(234, 217, 255);
+        }
+        .title{
+            background-color: rgb(234, 217, 255);
+            width: 95%
+        }
+        #watch_container{
+            width: 250px;
+            height: 20px auto;
+        }
+
+        #time{
+            font-size: 25px;
+            font-weight: bold;
+            color: blue;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>자기소개 페이지</h1>
+        </div>
+        <div id="sidebar_left"> 
+            <img id="profile">
+
+            <div>
+                <h1 id="profile_name">hong gil dong</h1>
+            </div>
+            <div>
+                <h4 class="contact">⛪ Incheon, Korea
+            </div>
+
+            <div>
+                <h4 class="contact">📱 전화번호 : <br> 010 - xxxx - xxxx</h4>
+            </div>
+            <div>
+                <h4 class="contact">✉ 이메일 : <br> gildong@computer.com</h4>
+            </div>
+            <div id="sns_button_box">
+                <!-- <input id="sns_button" type="button" value="sns로 이동!" href=""> -->
+                <a href="#">sns로 이동!</a>
+            </div>
+        </div>
+        <div id="contents">
+            <div>
+                <h2 class="title">자기소개</h2>
+                <div> 프로그래밍에 관심이 많습니다.</div>
+                <div> 현재 열심히 공부하며 코딩중!</div>
+            </div>
+            <div>
+                <h2 class="title">Experience</h2>
+                <div>
+                    <ul>
+                        <li>아주좋은 대학교</li>
+                            <ul>
+                                <li>응용프로그램개발(C#)</li>
+                                <li>모바일 app개발(안드로이드)</li>
+                                <li>반응형 웹</li>
+                            </ul>
+                        <br>
+                        <li>꽤 괜찮은 컴퓨터학원</li>
+                            <ul>
+                                <li>Spring 기반 프로젝트 - 쇼핑몰</li>
+                                <li>Cloud 서비스를 이용한 배포</li>
+                            </ul>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <h2 class="title">보유기술</h2>
+                <div>
+                    <ul>
+                        <li>Java</li>
+                        <li>Oracle</li>
+                        <li>HTML/CSS</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="title">Education</h2>
+            </div>
+            <div>
+                <table class="edu_table">
+                    <tr class="edu_table" id="edu_th">
+                        <th class="edu_table">출신학교</th>
+                        <th class="edu_table">전공</th>
+                        <th class="edu_table">기간</th>
+                        <th class="edu_table">구분</th>
+                    </tr>
+                    <tr class="edu_table">
+                        <td class="edu_table">아주좋은 대학교</td>
+                        <td class="edu_table">좋은학과</td>
+                        <td class="edu_table">2010.3~2014.2</td>
+                        <td class="edu_table">졸업</td>
+                    </tr>
+                    <tr class="edu_table">
+                        <td class="edu_table">아주좋은 고등학교</td>
+                        <td class="edu_table">-</td>
+                        <td class="edu_table">2007.3~2010.2</td>
+                        <td class="edu_table">졸업</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <div id="sidebar_right"> 
+            <div id="watch_container">
+                <div id="time"></div>
+            </div>
+        </div>
+        <div id="footer">
+            정보넣고 이거저거
+        </div>
+    </div>
+    <div style="margin-bottom: 200px"></div>
+
+</body>
+</html><script>
+    setInterval(()=>{             // setInterval => 정해진시간마다 반복되어 갱신됨
+        let datetime = new Date();
+        let obj = document.querySelector("#time");
+
+        let minutes = datetime.getMinutes();
+        let seconds = datetime.getSeconds();
+        
+
+        if (datetime.getMinutes() < 10) {
+            minutes = "0" + datetime.getMinutes();
+        }
+        
+        if (datetime.getSeconds() < 10) {
+            seconds = "0" + datetime.getSeconds();
+        } 
+        
+
+        let time = datetime.getHours() + " : "
+                    + minutes + " : "
+                    + seconds;
+
+        obj.innerHTML = time;
+    }, 1000); //1초마다 반복하여 갱신
+</script>
