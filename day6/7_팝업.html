@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="fnPopup()">팝업!</button>
+</body>
+</html>
+<script>
+    console.log("width ==> ", screen.width);
+    console.log("height ==> ", screen.height);
+
+    console.log("availWidth ==> ", screen.availWidth);
+    console.log("availHeight ==> ", screen.availHeight);
+
+    function fnPopup(){
+        // window.open(인자1, 인자2, 인자3)
+        // 인자1 : 팝업을 띄울 주소
+        // 인자2 : 팝업의 이름
+        // 인자3 : 크기(width, height) 및 위치(left, top, ...)
+
+        let top = (screen.availHeight-300) / 2;
+        let left = (screen.availWidth-600) / 2;
+
+        window.open(
+            "../day4/18_시계.html", 
+            "time",
+            `width=600, height=300, left=${left}, top=${top}`
+        );
+    }
+</script>

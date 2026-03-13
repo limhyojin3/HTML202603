@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="javascript:;" onclick="fnEvent()">
+        <img src="../media/실습 토끼.jpg" width="300" height="300">
+    </a>
+</body>
+</html>
+<script>
+    function fnEvent(){
+        let img = document.querySelector("img");  //<img src="../media/실습 토끼.jpg" width="300" height="300">
+        // img.addEventListener("click", () => {
+
+        //     img.src = "../media/실습 고양이.jpg";
+        // });
+
+        let imgList = [
+            "../media/실습 햄스터.jpg",
+            "../media/실습 고양이.jpg",
+            "../media/실습 강아지.jpg"
+        ];
+
+        img.addEventListener("mouseover", () => {   //img객체에 이벤트리스너 달기
+            
+            let ran = Math.floor(Math.random()*3); //0~3미만정수 //0,1,2
+            img.src = imgList[ran];
+        });
+
+
+
+        
+        img.addEventListener("mouseout", () => {
+
+            img.src = "../media/실습 토끼.jpg";
+        });
+
+
+    
+    }
+
+    //이벤트 종류
+    //click -> 마우스 클릭했을때
+    //dbclick -> 더블 클릭했을때
+    //mouseover, mouseout => 마우스 올라갔을 때, 떨어졌을 때
+    //mousedown => 마우스 누르고 있을때
+    //mouseup =>마우스 뗐을때
+    //mousemove => 마우스 움직일 때
+
+</script>

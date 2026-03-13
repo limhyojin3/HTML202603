@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>과목 목록</h1>
+    <h3 id="js">자바스크립트</h3>
+    <hr>
+    <div id="list"> <!--부모-->
+        <p id="java">자바</p>  <!--자식요소-->
+        <p id="oracle" style="color: blue;">오라클</p>
+        <p id="html">html</p>
+
+    </div>
+    <hr>
+    <!-- 자식 요소 맨뒤에 추가(이어붙이기)-->
+    <button onclick="fnAppend()">appendChild</button>
+
+    <!-- 선택한 노드 이전에 넣기-->
+    <button onclick="fnBefore()">insertBefore</button>
+
+    <!-- 태그 만들기-->
+    <button onclick="fnCreateNode()">createElement</button>
+
+    <!-- 태그의 속성 만들기 -->
+    <button onclick="fnCreateAttr()">createAttribute</button>
+
+
+
+
+    <!-- 자식 요소를 제거 -->
+    <button onclick="fnRemoveNode()">removeChild</button>
+
+    <!-- 속성 제거 -->
+    <button onclick="fnRemoveAttr()">removeAttribute</button>
+
+    <!-- 노드 복사 -->
+    <button onclick="fnCloneNode()">cloneNode</button>
+    
+</body>
+</html>
+<script>
+    function fnAppend(){
+        let list = document.querySelector("#list");
+        let js = document.querySelector("#js");
+        list.appendChild(js);  //부모.appendChild(객체)
+    }
+
+    function fnBefore(){
+        let list = document.querySelector("#list");
+        let js = document.querySelector("#js");
+        let html = document.querySelector("#html");
+        list.insertBefore(js, html);  //부모객체.insertBefore(삽입할객체,자식객체)
+        //                              js객체를 html객체 앞에 넣기
+    }
+
+    function fnCreateNode(){
+        let list = document.querySelector("#list");
+
+        let flutter = document.createElement("p"); //<p></p> 만들어진거임 =>내용채워야겟지
+        flutter.innerHTML = "flutter"; //<p>flutter</p>  
+        list.appendChild(flutter);  //부모.appendChild(객체)
+    }
+
+    function fnCreateAttr(){
+        let list = document.querySelector("#list");
+        let flutter = document.createElement("p"); 
+        flutter.innerHTML = "flutter"; //
+
+
+        //**태그자체가 객체               => 태그가 포함된것도 노드? yes, 1.요소노드 라고 함. 태그(뼈대)
+        //**속성들도 하나의 노드  => 2.속성노드!
+
+
+        let style = document.createAttribute("style"); //노드 = style="";
+        style.value = "color : red; font-weight : bold;";
+
+        flutter.setAttributeNode(style); //<p style="">flutter</p>
+        //<p style="color : red; font-weight : bold">flutter</p>
+
+        list.appendChild(flutter);  
+    }
+
+    function fnRemoveNode(){
+        let list = document.querySelector("#list");      //태그포함 객체
+        let oracle = document.querySelector("#oracle");
+        list.removeChild(oracle);
+    }
+    function fnRemoveAttr(){
+        let oracle = document.querySelector("#oracle"); //<p id="oracle" style="color: blue;">오라클</p>
+        oracle.removeAttribute("style");//<p id="oracle">오라클</p>
+
+    }
+
+    function fnCloneNode(){
+        let list = document.querySelector("#list"); //<div id="list"></div>
+        let js = document.querySelector("#js"); //<h3 id="js">자바스크립트</h3>
+        
+        list.appendChild(js.cloneNode(true)); // 기존거는 유지하면서 복사 + append(붙여넣기)
+
+    }
+
+</script>

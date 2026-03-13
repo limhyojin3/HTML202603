@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        table, tr ,td , th{
+            border : 1px solid black;
+            padding : 10px 20px;
+            text-align: center;
+            border-collapse: collapse;
+        }
+        #contents th {
+            background-color: beige;
+        }
+        #contents tr:nth-child(odd){
+            background-color: #d8e0ee;
+        }
+        td button{
+            border-radius: 10px;
+            cursor: pointer;
+            border : 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="contents"></div>
+</body>
+</html>
+<script>
+    $.ajax({
+        url : "http://192.168.30.57:3009/list",
+        dataType : "json",
+        type : "GET",
+        data : {},
+        success : function(data){
+            let list = data.list; // list가 json
+            console.log(list);
+
+            // 테이블 생성
+            // 학번, 이름, 학과, 학년, 키 출력
+            let contents = document.querySelector("#contents");
+            let table = document.createElement("table");
+            let tr = document.createElement("tr");
+            tr.innerHTML = "<th>학번</th><th>이름</th><th>학과</th><th>학년</th><th>키</th><th>삭제</th>";
+            table.appendChild(tr);
+            for(let i=0; i<list.length; i++){
+                let stu = document.createElement("tr");
+                stu.innerHTML =
+                        `<td>${list[i].STU_NO}</td>`
+                        + `<td>${list[i].STU_NAME}</td>`
+                        + `<td>${list[i].STU_DEPT}</td>`
+                        + `<td>${list[i].STU_GRADE}</td>`
+                        + `<td>${list[i].STU_HEIGHT || ""}</td>`
+                        + `<td><button>삭제</button></td>`;
+                table.appendChild(stu);
+            }
+            contents.appendChild(table);
+        }
+    })
+
+</script>

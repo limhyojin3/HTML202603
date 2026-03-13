@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, tr, td {
+            border : 1px solid black;
+            padding : 5px 10px;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="contents">
+
+    </div>
+    <div>
+        <button onclick="fnCreateTable()">테이블 만들기</button>
+    </div>
+</body>
+</html>
+<script>
+    function fnCreateTable(){   //이해완료(+)
+        let contents = document.querySelector("#contents");
+        contents.innerHTML = "";
+
+        let table = document.createElement("table"); //<table></table>
+        let row = document.createElement("tr");  //<tr></tr>
+        // let column1 = document.createElement("td"); //<td></td>
+        // column1.innerHTML = "1"; //<td>1</td>
+        // row.appendChild(column1); //<tr><td>1</td></tr>
+
+        // for(let i=1; i<=5; i++){
+        //     let column = document.createElement("td"); //<td></td>
+        //     column.innerHTML = i; //<td>1</td>
+        //     row.appendChild(column); //<tr><td>1</td><td>2</td>...</tr>    => 행이 1개
+        // }
+        // console.log(row); //<tr><td>1</td><td>2</td>.... <td>5</td></tr>        // <= 내가 원하던거
+
+        // table.appendChild(row); //<table></table>
+
+        for(let j=1; j<=5; j++){ //5개의 행을 만들거임
+
+            let row = document.createElement("tr");  //행을 계속 새롭게 만들어줘야함. //<tr></tr>
+
+            for(let i=1; i<=5; i++){
+                let column = document.createElement("td"); //<td></td>
+                column.innerHTML = i; //<td>1</td>
+                row.appendChild(column); //<tr><td>1</td><td>2</td>...</tr>    => 행이 1개
+            } //=>행이 1개만들어짐
+
+            table.appendChild(row); //<table><tr><td>1</td><td>2</td>...</tr></table> //만들어진행을 테이블 자식으로 붙임
+        } //=> 행이 5개  //=>테이블이 완성됨.
+
+        // let contents = document.querySelector("#contents");
+        contents.appendChild(table);
+    }
+</script>

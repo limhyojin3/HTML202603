@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, td {
+            border : 1px solid black;
+            text-align: center;
+            border-collapse: collapse;
+            padding : 5px 10px;
+        }
+        input {
+            width: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <input id="rCnt" value="1">행 <input id="cCnt" value="1">열   <!-- value=1은 초기값으로 들어가있는거 -->
+    <button onclick="fnDrawTable()">작성</button>
+    <div id="contents">
+
+    </div>
+
+</body>
+</html>
+<script>
+    function fnDrawTable(){
+        let contents = document.querySelector("#contents");
+        
+        contents.innerHTML = "";
+
+        let rows = document.querySelector("#rCnt").value; //2
+        let cols = document.querySelector("#cCnt").value; //7
+
+        let table = document.createElement("table"); //<table></table>
+
+        for(let i=1; i <= rows; i++){  //행의개수만큼반복
+
+            let tr = document.createElement("tr"); //<tr></tr>
+
+            for(let j=1; j <= cols; j++){
+                let td = document.createElement("td"); //<td></td>
+                td.innerHTML = `${i}, ${j}`; //<td>, 1</td>
+                tr.appendChild(td); //<tr><td>, 1</td><td>, 2</td>...<td>, 7</td></tr>
+            }
+
+            console.log(tr); //<tr><td>, 1</td><td>, 2</td>...<td>, 7</td></tr> =>행1개완성
+        
+            table.appendChild(tr);  //<table><tr></tr></table> //table안에2개행들어가겟군!
+        
+        } //table 다 완성됨
+
+        contents.appendChild(table);
+
+
+
+
+
+
+
+        // let tr = document.createElement("tr"); //<tr></tr>
+        // for(let j=1; j <= cols; j++){
+        //     let td = document.createElement("td"); //<td></td>
+        //     td.innerHTML = `, ${j}`; //<td>, 1</td>
+        //     tr.appendChild(td); //<tr><td>, 1</td><td>, 2</td>...<td>, 7</td></tr>
+        // }
+        // console.log(tr); //<tr><td>, 1</td><td>, 2</td>...<td>, 7</td></tr> =>행1개완성
+    }
+</script>

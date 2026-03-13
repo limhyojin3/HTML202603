@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="javascript:;" onclick="fnEvent()">
+        <img src="../media/실습 토끼.jpg" width="300" height="300">
+    </a>
+</body>
+</html>
+<script>
+    function fnEvent(){
+        // alert("안녕!");
+        let img = document.querySelector("img");  //<img src="../media/실습 토끼.jpg" width="300" height="300">
+        img.src = "../media/실습 햄스터.jpg";  //객체에 접근 -> 속성에 접근
+
+    }
+
+</script>

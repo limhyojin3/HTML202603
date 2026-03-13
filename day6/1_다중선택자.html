@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div> 관심언어 : 
+        <label><input type="checkbox" name="subject" value="java">자바</label>
+        <label><input type="checkbox" name="subject" value="oracle">오라클</label>
+        <label><input type="checkbox" name="subject" value="html">HTML</label>
+        <label><input type="checkbox" name="subject" value="cpp">C++</label>
+        <label><input type="checkbox" name="subject" value="flutter">FLUTTER</label>
+    </div>
+    <button onclick="fnSubject()">확인</button>
+                                                                            <!--요청->서버->디비에 저장 -->
+                                                                            <!--    js                -->
+</body>                                                   
+</html>
+<script>
+    function fnSubject(){
+        //체크된 항목만 가져오기
+                                            //input(태그) 중에 name이 'subject'인 애들만 가져와라, 특히 checked 된거만 가져와라
+        let list = document.querySelectorAll("input[name='subject']:checked");  //객체들 가져옴. 객체담긴 리스트됨 
+        //                                                                      //다중선택 //input[name]->
+        console.log(list); //객체
+
+        // console.log(list[0].value); //oracle;
+
+        for(let i=0; i<list.length; i++){ //i<3
+            console.log(list[i].value); //java,oacle,cpp
+        }
+
+
+    }
+</script>

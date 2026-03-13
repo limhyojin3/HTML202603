@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <label>아이디 : <input type="text" id="userId"></label>
+        </div>
+        <div>
+            <label>비밀번호 : <input type="password" id="pwd1"></label>
+        </div>
+        <div>
+            <label>비밀번호 확인 : <input type="password" id="pwd2"></label>
+        </div>
+        <div>
+            <button onclick="fnJoin()">회원가입</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function fnJoin(){
+
+        let userId = document.querySelector("#userId").value; //input박스 안에 있는 값 가져오기
+
+        if(userId.length < 6){
+            alert("아이디는 6글자 이상으로 하세요");
+            return;
+        }
+
+
+        // 1. 문자열이 소문자+숫자인지 검사
+        const regex = /^[a-z0-9]+$/;         
+        //console.log(regex.test(userId)); //true,false   //-> 영문자만 또는 숫자만 넣어도 true로 나온다.
+
+        if(!regex.test(userId)){
+            alert("아이디는 소문자 + 숫자");
+            return;
+        }
+
+
+
+        // 1. 패스워드는 8글자 이상
+        // 2. '패스워드', '패스워드 확인' 두개는 같은 값
+        // 3. 패스워드에는 특수문자 필수
+
+        let pwd1 = document.querySelector("#pwd1").value;
+        let pwd2 = document.querySelector("#pwd2").value;
+        
+        if(pwd1.length < 8){
+            alert("비밀번호는 8글자 이상입니다.");
+            return;
+        }
+
+        //console.log(pwd1==pwd2);
+        if(pwd1 != pwd2){
+            alert("비밀번호와 비밀번호확인이 다릅니다.다시 입력해주세요");
+            return;
+        }
+
+        const regex1 = /^(?=.*[!@#$%^&*])[a-z\d!@#$%^&*]+$/;  //특수문자를 꼭 포함하도록.
+        //console.log(regex1.test(pwd1)); //특수문자포함X ->false
+
+        if(!regex1.test(pwd1)){
+            alert("비밀번호는 특수문자를 포함해야합니다!");
+            return;
+        }
+
+        
+    }
+</script>
