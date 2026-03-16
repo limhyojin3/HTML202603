@@ -46,8 +46,10 @@
     <div class="box2"></div>
     <hr>
 
-    <div style="width: 700px; height:400px; position: relative;">  
-        <div class="box3"></div>
+    <div style="width: 700px; height:400px; position: relative;">  <!--부모가 relative-->
+        <div class="box3"></div>  <!-- 자식이 absolute  =>  
+                                        상위요소(부모,조부모?)에 relative가 있는경우 부모(상위요소)가 기준점이 됨
+                                        relative가 없으면 body가 기준점이 됨.-->
     </div>
 </body>
 </html>
