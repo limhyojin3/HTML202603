@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        table, th, tr, td{
+            border: 2px solid black;
+            padding : 5px 10px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- html. 반드시 id가 app인 태그 안에서 작업 -->
+        <!-- (script 맨 하단 app.mount('#app'); 여기 아이디와 같아야 함) -->
+    
+        <div v-for="item in numberList">
+            <span v-if="item >= 6" style="color:blue;">{{item}}</span>
+            <span v-else>{{item}}</span>
+        </div>
+        <hr>
+        <div v-for="(item, index) in strList">
+            <span>{{index+1}}. {{item}}</span>
+        </div>
+        <hr>
+        <table>
+            <tr>
+                <th>No.</th>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+            <tr v-for="(item, index) in jsonData">
+                <td>{{index+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.addr}}</td>
+            </tr>
+        </table>
+
+        <div style="margin-top: 1000px;"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 - (key : value)
+
+                numberList : [10, 5, 3, 7, 9],
+                strList : ["짜장면", "제육", "김치찌개", "라면+김밥"],
+                jsonData : [
+                    {name : "홍길동", age : 30, addr : "인천"},
+                    {name : "김철수", age : 35, addr : "서울"},
+                    {name : "김영희", age : 20, addr : "제주도"}
+                ]
+            };
+        },
+        methods: {
+            // 함수(메소드) - (key : function())
+
+
+
+            fnUserList: function () {
+                $.ajax({
+                    url: "",
+                    dataType: "json",
+                    type: "GET",
+                    data: {},
+                    success: function (data) {
+
+                    }
+                });
+            }
+        }, // methods
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+        }
+    });
+
+    app.mount('#app');
+</script>

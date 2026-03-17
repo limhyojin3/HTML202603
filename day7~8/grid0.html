@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: 200px minmax(600px,auto);
+            grid-template-rows: 200px minmax(600px,auto);
+            grid-template-areas: 
+            "header header"
+            "side contents";
+        }
+        #container div{
+            border: 1px solid gray;
+        }
+        .header{
+            grid-area: header;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .side{
+            grid-area: side;
+        }
+        .contents{
+            grid-area: contents;
+            display: flex;
+            flex-wrap: wrap; 
+        }
+
+        .card{
+            width: 200px;
+            height: 200px;
+        }
+        #logo{
+            padding: 50px;
+            margin-left: 20px;
+        }
+        #search{
+            padding: 50px;
+        }
+        #user{
+            padding: 50px;
+            margin-right: 20px;
+        }
+        #category{
+            height: 240px;
+        }
+        #price{
+            height: 240px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="header">
+            <div id="logo">
+                1
+            </div>
+            <div id="search">
+                2
+            </div>
+            <div id="user">
+                3
+            </div>
+        </div>
+        <div class="side">
+            <div id="category">
+                카테고리
+            </div>
+            <div id="price">
+                가격대
+            </div>
+        </div>
+        <div class="contents">
+            <div class="card">
+                1
+            </div>
+            <div class="card">
+                2
+            </div>
+            <div class="card">
+                3
+            </div>
+            <div class="card">
+                4
+            </div>
+            <div class="card">
+                5
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
