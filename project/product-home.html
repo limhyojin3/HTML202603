@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid 실습 완성본</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js"></script>
+
+  <style>
+        .swiper {
+            width: 100%;
+            height: auto;
+            /* wdith : 800px 등 원하는 크기 가능 */
+        }
+        /* 슬라이드 안의 이미지가 영역에 딱 맞게 들어가도록 설정 */
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            display: block;
+        }
+  </style>
+
+
+</head>
+
+
+<body>
+
+  <div id="app" class="dashboard-container">
+
+    <div class="box header">
+      <div class="header-logo">
+        <img src="logo.png" class="logo-image">
+      </div>
+
+      <div class="header-search">
+        <input type="text" placeholder="검색어를 입력하세요..." v-model="keyword" @keyup.enter="fnList">
+        <button type="button" class="search-btn" @click="fnList">검색</button>
+      </div>
+
+      <div class="header-utils">
+        <button class="notification-btn">
+          🔔
+          <span class="badge">3</span>
+        </button>
+        <div class="user-profile">
+          <div class="avatar" @click="fnMypage">👨‍💻</div>
+          <span class="username" @click="fnMypage">{{sessionName}}</span>
+          <button @click="fnLogout">로그아웃</button>
+        </div>
+      </div>
+    </div>
+    <div class="box side">
+      <div class="side-title">카테고리</div>
+      <ul class="category-list">
+        <li><a href="#" class="active" @click="fnCategory('')">전체 상품</a></li>
+
+        <li v-for="item in categoryList">
+          <a href="javascript:;" @click="fnCategory(item.CATEGORY)">{{item.CATEGORY}}</a> 
+        </li>                             <!--인자값으로 db에 있는 값을 넘겨줘도됨.-->
+
+        <!-- <li><a href="#" @click="fnCategory('스마트폰')">스마트폰</a></li>
+        <li><a href="#" @click="fnCategory('게임기')">게임기</a></li>
+        <li><a href="#" @click="fnCategory('노트북')">노트북</a></li>
+        <li><a href="#" @click="fnCategory('태블릿')">태블릿</a></li> -->
+      </ul>
+
+      <div class="side-title">가격대</div>
+      <ul class="filter-list">
+        <li><label><input type="checkbox"> 1만원 이하</label></li>
+        <li><label><input type="checkbox"> 1만원 ~ 3만원</label></li>
+        <li><label><input type="checkbox"> 3만원 ~ 5만원</label></li>
+        <li><label><input type="checkbox"> 5만원 이상</label></li>
+      </ul>
+    </div>
+    <div class="box banner">
+      <div class="swiper">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="banner/banner1.png"></div>
+              <div class="swiper-slide"><img src="banner/banner2.png"></div>
+              <div class="swiper-slide"><img src="banner/banner3.png"></div>
+              <div class="swiper-slide"><img src="banner/banner4.png"></div>
+              <div class="swiper-slide"><img src="banner/banner5.png"></div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+
+    <div class="box content">
+      <div class="product-card" v-for="item in list" @click="fnInfo(item.PRODUCT_ID)":>  <!-- list변수에 있는걸 순회-->
+        <img :src="item.IMG_PATH" alt="상품 1" class="product-img"> <!-- :(콜론) 없으면 문자열로만 인식됨. : 붙여주면 주소로 인식-->
+        <div class="product-info">
+          <div class="product-name">{{item.PRODUCT_NAME}}</div>
+          <div class="product-category">{{item.CATEGORY}}</div>
+          <div class="product-price">{{item.PRICE_WON}}원</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box footer">하단 영역~~</div>
+  </div>
+
+</body>
+
+</html>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 - (key : value)  // 변수에는 1.v-model로 얻어온거 말고도 2.db에서 얻어온거를 담을수있음. 또는 3.html에서 인자로 받은값을 담을수있음.
+                list : [],  //가져온값을 self.list에 담는다
+                categoryList : [],
+                keyword : "",
+                category : "",
+                sessionName: ""
+                
+            };
+        },
+        methods: {
+            // 함수(메소드) - (key : function())
+            
+            fnList: function () {
+                let self = this;
+                $.ajax({
+                    url: "http://192.168.30.57:3009/product/list",
+                    dataType: "json",
+                    type: "GET",
+                    data: {keyword : self.keyword, brand : "", category : self.category}, //왼쪽은 db에 있는 컬럼명, 오른쪽은 내가 보내는 값
+                    success: function (data) {
+                        console.log(data);
+                        self.list = data.productList;
+                    }
+                });
+            },
+            fnCategory : function(category){
+              let self = this;
+              self.category = category;  //** v-model 없이 인자로 받은값을 변수에 전달!
+
+              self.fnList();
+            },
+            fnCategoryList: function () {
+                let self = this;
+
+                $.ajax({
+                    url: "http://192.168.30.57:3009/category/list",
+                    dataType: "json",
+                    type: "GET",
+                    data: {}, //내가보내는값이 없을때는 빈값
+                    success: function (data) {
+                        console.log(data);
+
+                        self.categoryList = data.categoryList; //data 안에있는 categoryList에 있는것을 self의 categoryList에 담는다.
+                    }
+                });
+            },
+            fnInfo : function(productId){ //function(4)
+              // product-info.html
+              location.href = "product-info.html?productId=" + productId;
+
+            },
+            fnInit: function() {
+                const swiper = new Swiper('.swiper', {
+                    loop: true,
+                    autoplay: {
+                        delay: 2500,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                });
+            },
+            fnLogout: function(){
+              localStorage.clear();
+              location.href="Login.html";
+            }
+        }, // methods
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+            let self = this;
+            self.fnCategoryList();
+
+            self.fnList();
+            self.fnInit();
+            console.log("localName => ", localStorage.getItem("sessionName"));
+
+            if(localStorage.getItem("sessionName") == null){
+              alert("로그인 후 이용해주세요");
+              location.href = "Login.html";
+            }
+
+            self.sessionName = localStorage.getItem("sessionName");
+        }
+    });
+
+    app.mount('#app');
+</script>

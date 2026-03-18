@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+       
+        * {
+            box-sizing: border-box;  
+        }
+
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* 컨테이너 */
+        #app {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 380px;
+            padding: 45px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            text-align: center;
+        }
+
+        #container h2 {
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        #container p {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 35px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .input-group span {
+            display: block;
+            font-size: 13px;
+            color: #555555;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+            font-size: 14px;
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #4A90E2;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #4A90E2;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* 버튼 마우스 오버 시 색상 변경 (애니메이션 없음) */
+        .login-btn:hover {
+            background-color: #357ABD;
+        }
+
+        /* 하단 부가 기능 링크 */
+        .bottom-links {
+            margin-top: 25px;
+            font-size: 13px;
+        }
+
+        .bottom-links a {
+            color: #888;
+            text-decoration: none;
+        }
+
+        .bottom-links a:hover {
+            color: #333;
+            text-decoration: underline;
+        }
+
+        .bottom-links .divider {
+            color: #ddd;
+            margin: 0 10px;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div id="container">
+            <h2>환영합니다</h2>
+            <p>서비스 이용을 위해 로그인해주세요.</p>
+
+            
+            <div class="input-group">
+                <span>아이디</span>
+                <input type="text" v-model="userId" placeholder="아이디를 입력해주세요.">
+            </div>
+
+            <div class="input-group">
+                <span>비밀번호</span>
+                <input @keyup.enter="fnLogin" type="password" v-model="pwd" placeholder="비밀번호를 입력하세요">
+                
+            </div>
+            
+            <button class="login-btn" @click="fnLogin">로그인</button>
+
+            <div class="bottom-links">
+                <a href="#">비밀번호 찾기</a>
+                <span class="divider">|</span>
+                <a href="Join.html">회원가입</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 - (key : value)
+                userId : "",
+                pwd : ""
+            };
+        },
+        methods: {
+            // 함수(메소드) - (key : function())
+            fnLogin : function () {
+                let self = this;
+                let param = {
+                    userId : self.userId,
+                    pwd : self.pwd
+                };
+                $.ajax({
+                    url: "http://192.168.30.57:3009/login",
+                    dataType: "json",
+                    type: "GET",
+                    data : param,
+                    // data: {userId : self.userId, pwd : self.pwd},
+                    success : function (data) {
+                        console.log(data);
+
+                        alert(data.message);
+                        
+                        if(data.success){
+                            localStorage.setItem("sessionId", data.userInfo.USERID);
+                            localStorage.setItem("sessionName", data.userInfo.USERNAME);
+                            localStorage.setItem("sessionGender", data.userInfo.GENDER);
+                            location.href = "product-home.html";
+                        }
+                        
+                    }
+                });
+            }
+        }, // methods
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+        }
+    });
+
+    app.mount('#app');
+</script>
