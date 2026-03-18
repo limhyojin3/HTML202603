@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <style>
         #container{
             display: flex;
@@ -12,36 +14,46 @@
         #contents{
             display: grid;
             grid-template-columns: 250px 600px 300px;
-            grid-template-rows: 200px 800px;
+            grid-template-rows: 200px 50px 800px;
             grid-template-areas: 
             "header header header"
+            "list list list"
             "left-side middle right-side";
             border: 2px solid gray;
             margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px gray;
+        }
+        .list{ 
+            grid-area: list;
+            background-color: rgb(240, 235, 174);
         }
         .header {
             grid-area: header;
-            background-color: rgb(208, 255, 197);
+            background-color: rgb(240, 235, 174);
         }
         .left-side{
             grid-area: left-side;
-            background-color: rgb(188, 255, 171);
+            background-color: rgb(253, 244, 147);
         }
         .middle{
             grid-area: middle;
             padding-left: 30px;
+            background-color: white;
         }
         .right-side{
             grid-area: right-side;
+            background-color: white;
         }
         #profile{
             width: 150px;
             height: 150px;
-            border-radius: 50%;
-            border:2px solid gray;
+            border-radius: 20%;
+            border:5px solid rgb(255, 255, 255);
             background-image: url(실습\ 햄스터.jpg);
-            background-size: 200px;
+            background-size: cover;
             background-position: center;
+            background-repeat: no-repeat; /* 반복 금지 */
             
             margin-top: 30px;
             cursor: pointer;
@@ -50,9 +62,7 @@
         #profile:hover{
             background-image: url(실습\ 고양이.jpg);
         }
-        #profile_name{
-            
-        }
+        
         #sns_button_box{
             /* margin: 5px auto; */
             padding-top:20px;
@@ -68,14 +78,11 @@
             font-weight: bold;
         }
         #sns_button_box a:hover{
-            background: #eee;
+            background: #dddddd;
         }
 
-        .contact{
-            
-        }
 
-        .edu_table{
+        table, tr, th, td{
             border : 1px solid #ddd; /* 2px 크기의 검은색 선(solid)*/
             border-collapse: collapse;  /* 겹치는 선을 하나로 만들어주는 속성이다*/
             padding : 5px 20px; /* 상하 5px 좌우 20px*/
@@ -84,133 +91,247 @@
             margin-top: 30px;
         }
         #edu_th{
-            background-color: rgb(188, 255, 171);
+            background-color: rgb(255, 231, 18);
         }
         .title{
-            background-color: rgb(188, 255, 171);
-            width: 95%
+            background-color: rgb(255, 246, 147);
+            display:inline-block;
         }
         #watch_container{
-            width: 250px;
             height: 20px auto;
+            padding: 30px;
+            text-align: center;
         }
 
         #time{
             font-size: 25px;
             font-weight: bold;
-            color: blue;
+            color: rgb(37, 37, 128);
+            
+            display: inline-block;
+            padding: 3px 5px;
+            background-color: rgb(231, 170, 255);
+            cursor: pointer;
+        }
+        #profile-card{
+            margin: 10px 10px;
+            border: 2px solid green;
+            border-radius: 10px;
+        }
+        div{
+            border: 1px solid gray;
+        }
+        .header>h1{
+            text-align: right; 
+            margin-right: 30px;
+            margin-top: 60px;
+            cursor: pointer;
+        }
+        #profile-card>div{
             text-align: center;
         }
+        .contact{
+            text-align: left; 
+            margin-left: 20px;
+        }
+        #sns_button_box{
+            text-align: center;
+        }
+        #profile_name{
+            background-color: #bbefff;
+            padding: 2px 3px;
+            margin: 30px 10px 0 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 0 5px gray;
+        }
 
-        
+        #profile_name:hover{
+            background-color: rgb(123, 206, 234);
+        }
+
+        input[type="radio"]{
+            opacity: 0;
+        }
+        input[type="radio"] + label{
+            position: relative;
+            cursor: pointer;
+            border: 3px solid gray;
+            padding: 5px 20px;
+            margin-top: 10px;
+            background-color: #afd546;
+            border-radius: 5px;
+            
+        }
+        input[type="radio"] + label:hover{
+
+            background-color: #8bbe00;
+
+        }
+        .basicBtn{
+            height: 45px;
+            display: flex;
+            justify-content: center;
+        }
+        .introduce{
+            margin-top: 50px;
+        }
+        span{
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+        }
+        body{
+            background-image: url("wrtFileImageView.jpg");
+            background-size: cover; /* 이미지를 비율 유지하며 꽉 차게 */
+            background-position: center; /* 이미지 중앙 정렬 */
+            background-repeat: no-repeat; /* 반복 금지 */
+            min-height: 100vh; /* 화면 높이 전체 채우기 */
+        }
+        p>span{
+            background-color: pink;
+            border-radius: 5px;
+        }
 
     </style>
 </head>
 <body id="container">
-    <div id="contents">
-        <div class="header">
-            <h1 style="text-align: right; margin-right: 30px; margin-top: 60px;" >자기소개페이지</h1>
-        </div>
-
-        <div class="left-side" >
-            <div style="text-align: center;">
-                <img id="profile">
-                <h1 id="profile_name">hong gil dong</h1>
+    <div id="app">
+        <div id="contents">
+            <div class="header">
+                
+                <h1 @click="fnAlert">자기소개페이지</h1>
             </div>
-            
-            <div>
-                <h4 class="contact" style="text-align: left; margin-left: 20px;">⛪ Incheon, Korea
-            </div>
-
-            <div>
-                <h4 class="contact" style="text-align: left; margin-left: 20px;">📱 전화번호 : <br> 010 - xxxx - xxxx</h4>
-            </div>
-            <div>
-                <h4 class="contact" style="text-align: left; margin-left: 20px;">✉ 이메일 : <br> gildong@computer.com</h4>
-            </div>
-            <div id="sns_button_box" style="text-align: center;">
-                <!-- <input id="sns_button" type="button" value="sns로 이동!" href=""> -->
-                <a href="#">sns로 이동!</a>
-            </div>
-        </div>
-        <div class="middle">
-            <div>
-                <h2 class="title">자기소개</h2>
-                <div> 프로그래밍에 관심이 많습니다.</div>
-                <div> 현재 열심히 공부하며 코딩중!</div>
-            </div>
-            <div>
-                <h2 class="title">Experience</h2>
-                <div>
-                    <ul>
-                        <li>아주좋은 대학교</li>
-                            <ul>
-                                <li>응용프로그램개발(C#)</li>
-                                <li>모바일 app개발(안드로이드)</li>
-                                <li>반응형 웹</li>
-                            </ul>
-                        <br>
-                        <li>꽤 괜찮은 컴퓨터학원</li>
-                            <ul>
-                                <li>Spring 기반 프로젝트 - 쇼핑몰</li>
-                                <li>Cloud 서비스를 이용한 배포</li>
-                            </ul>
-                    </ul>
-                </div>
-            </div>
-            <div>
-                <h2 class="title">보유기술</h2>
-                <div>
-                    <ul>
-                        <li>Java</li>
-                        <li>Oracle</li>
-                        <li>HTML/CSS</li>
-                    </ul>
+            <div class="list">
+                <div class="basicBtn">
+                    <input id="basic1" type="radio" name="basicList" v-model="basic" value="자기소개">
+                    <label for="basic1"><span>자기소개</span></label>
+                    <input id="basic2" type="radio" name="basicList" v-model="basic" value="Experience">
+                    <label for="basic2"><span>Experience</span></label>
+                    <input id="basic3" type="radio" name="basicList" v-model="basic" value="보유기술">
+                    <label for="basic3"><span>보유기술</span></label>
+                    <input id="basic4" type="radio" name="basicList" v-model="basic" value="Education">
+                    <label for="basic4"><span>Education</span></label>
                 </div>
             </div>
 
-            <div>
-                <h2 class="title">Education</h2>
-            </div>
-            <div>
-                <table class="edu_table">
-                    <tr class="edu_table" id="edu_th">
-                        <th class="edu_table">출신학교</th>
-                        <th class="edu_table">전공</th>
-                        <th class="edu_table">기간</th>
-                        <th class="edu_table">구분</th>
-                    </tr>
-                    <tr class="edu_table">
-                        <td class="edu_table">아주좋은 대학교</td>
-                        <td class="edu_table">좋은학과</td>
-                        <td class="edu_table">2010.3~2014.2</td>
-                        <td class="edu_table">졸업</td>
-                    </tr>
-                    <tr class="edu_table">
-                        <td class="edu_table">아주좋은 고등학교</td>
-                        <td class="edu_table">-</td>
-                        <td class="edu_table">2007.3~2010.2</td>
-                        <td class="edu_table">졸업</td>
-                    </tr>
-                </table>
-            </div>
+            <div class="left-side" >
+                <div id="profile-card">
+                    <div>
+                        <img id="profile">
+                        <div>
+                            <h2 id="profile_name" @click="fnAlert">Lim HJ</h2>
+                        </div>
+                        
+                    </div>
+                    
+                    <div>
+                        <h4 class="contact">⛪ Incheon, Korea
+                    </div>
 
-        </div>
-        <div class="right-side">
-            <div id="watch_container" style="padding: 30px;">
-                <div id="time" ></div>
+                    <div>
+                        <h4 class="contact">📱 전화번호 : <br> 010 - xxxx - xxxx</h4>
+                    </div>
+                    <div>
+                        <h4 class="contact">✉ 이메일 : <br> gildong@computer.com</h4>
+                    </div>
+                    
+                </div>
+                <div id="sns_button_box">
+                        <!-- <input id="sns_button" type="button" value="sns로 이동!" href=""> -->
+                        <a href="https://github.com/">Github로 이동!</a>
+                </div>
+                
             </div>
-            <div>
-                <div>
-                    <a href="" hidden style="text-decoration: none; color: rgb(69, 72, 255); font-weight: bold;">토이프로젝트 보러가기</a>
+            <div class="middle">
+                <div  v-if="basic == '자기소개'">
+                    <div  class="introduce">
+                        <h2 class="title">자기소개</h2>
+                        <div>
+                            <br>
+                            <p><span>프로그래밍</span>에 관심이 많습니다.</p>
+                            <p>현재 열심히 공부하며 코딩중!</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div v-if="basic == 'Experience'">
+                    <div  class="introduce">
+
+                        <h2 class="title">Experience</h2>
+                        <div>
+                            <ul>
+                                <li>아주좋은 대학교</li>
+                                    <ul>
+                                        <li>응용프로그램개발(C#)</li>
+                                        <li>모바일 app개발(안드로이드)</li>
+                                        <li>반응형 웹</li>
+                                    </ul>
+                                <br>
+                                <li>꽤 괜찮은 컴퓨터학원</li>
+                                    <ul>
+                                        <li>Spring 기반 프로젝트 - 쇼핑몰</li>
+                                        <li>Cloud 서비스를 이용한 배포</li>
+                                    </ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="basic == '보유기술'">
+                    <div  class="introduce">
+
+                        <h2 class="title">보유기술</h2>
+                        <div>
+                            <ul>
+                                <li>Java</li>
+                                <li>Oracle</li>
+                                <li>HTML/CSS</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div v-if="basic == 'Education'">
+                    <div  class="introduce">
+                        <div>
+                            <h2 class="title">Education</h2>
+                        </div>
+                        <div>
+                            <table >
+                                <tr  id="edu_th">
+                                    <th >출신학교</th>
+                                    <th >전공</th>
+                                    <th >기간</th>
+                                    <th >구분</th>
+                                </tr>
+                                <tr >
+                                    <td >아주좋은 대학교</td>
+                                    <td >좋은학과</td>
+                                    <td >2010.3~2014.2</td>
+                                    <td >졸업</td>
+                                </tr>
+                                <tr >
+                                    <td >아주좋은 고등학교</td>
+                                    <td >-</td>
+                                    <td >2007.3~2010.2</td>
+                                    <td >졸업</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side">
+                <div id="watch_container">
+                    <div id="time" ></div>
                 </div>
             </div>
         </div>
     </div>
+    
 </body>
 </html>
 <script>
-    alert("welcome!");
+    // alert("welcome!");
 
     setInterval(()=>{             // setInterval => 정해진시간마다 반복되어 갱신됨
         let datetime = new Date();
@@ -235,4 +356,29 @@
 
         obj.innerHTML = time;
     }, 1000); //1초마다 반복하여 갱신
+
+    
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 - (key : value)
+                basic: "자기소개"
+            };
+        },
+        methods: {
+            // 함수(메소드) - (key : function())
+            fnUserList: function () {
+                
+            },
+            fnAlert: function(){
+                alert("안녕하세요! Lim hj 입니다! 방문해주셔서 감사합니다!");
+            }
+        }, // methods
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+        }
+    });
+
+    app.mount('#app');
+
 </script>
