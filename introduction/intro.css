@@ -33,9 +33,16 @@
         padding-left: 30px;
         background-color: white;
     }
+    .middle:hover{
+        transform: scale(1.02);
+        box-shadow: 2px 2px 2px gray;
+        border-radius: 5px;
+    }
+
     .right-side{
         grid-area: right-side;
         background-color: white;
+        border-left: 2px dashed #8bbe00;
     }
     #profile{
         width: 150px;
