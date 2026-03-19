@@ -85,7 +85,8 @@
                 list : [],
                 keyword : "",
                 brand : "",
-                productIdList: []
+                productIdList : [],
+                checkFlg : false
             };
         },
         methods: {
@@ -105,6 +106,11 @@
             },
             fnRemove : function(){
                 let self = this;
+
+                if(!confirm("정말 삭제?")){
+                    return;
+                }
+
                 console.log(self.productId);
                 $.ajax({
                     url: "http://192.168.30.57:3009/product/delete-list",
@@ -123,6 +129,11 @@
 
             fnBtnRemove :function(pId){
                 let self = this;
+
+                if(!confirm("정말 삭제?")){
+                    return;
+                }
+
                 console.log(pId);
 
                 if(!confirm)
@@ -141,18 +152,16 @@
             },
             fnAllCheck : function(){
                 let self = this;
-                
-                if(self.productIdList.length == self.list.length){
+
+                if(self.checkFlg){
+                     self.productIdList = [];
+                } else {
                     self.productIdList = [];
-                } else{
-                    self.productIdList = [];
-                    
                     for(let i=0; i<self.list.length; i++){
-                        self.productIdList.push(self.list[i].PRODUCT_ID);
+                        self.productIdList.push(self.list[i].PRODUCT_ID); 
                     }
                 }
-
-                self.check
+                self.checkFlg = !self.checkFlg;
                 
             }
 

@@ -10,38 +10,37 @@
         *{
             box-sizing: border-box;
         }
-        body { 
+        body {
             background-color: #f0f2f5;
         }
-        #container {
+        #container{
             width: 850px;
-            margin : 50px auto;
+            margin: 50px auto; /* 상(하) 50px, 좌우여백을 auto(여백을 동일하게 맞춰줌)*/
             background-color: white;
-            padding : 20px 40px;
+            padding: 20px 40px;
             border-radius: 15px;
         }
-        h1{ 
-            padding-bottom: 20px;
+        h1{
             border-bottom: 1px solid black;
+            padding-bottom: 20px;
         }
-        .product-wrap {
+        .product-wrap{
             display: flex;
             align-items: flex-start;
-            gap : 30px
+            gap : 30px;
         }
-        .product-img {
-            flex: 1;
+        .product-img{
+            flex : 1;
             width: 400px;
         }
-        #main-img {
+        #main-img{
             width: 100%;
             height: 400px;
             object-fit: contain;
             border: 1px solid #eee;
         }
         #sub-img{
-            display: flex;
-            gap : 10px;
+            
         }
         .small-img{
             width: 100px;
@@ -51,24 +50,27 @@
             cursor: pointer;
             border-radius: 10px;
         }
+        
 
-        #desc {
-            flex: 1;
+        #desc{
+            flex :1;
             width: 400px;
         }
-        #desc ul {
+
+        #desc ul{
             list-style: none;
             padding-left: 0;
             font-weight: 500;
         }
+
         #desc li{
             font-size: 20px;
-            line-height: 2.5;
+            line-height: 2.5; /*텍스트간 간격*/
         }
         #desc button{
             width: 100%;
-            padding : 12px;
-            background-color: rgb(119, 119, 224);
+            padding: 12px;
+            background-color: rgb(82, 82, 221);
             color: white;
             border: none;
             font-size: 20px;
@@ -77,13 +79,14 @@
             font-weight: bold;
         }
         #desc button:hover{
-            background-color: rgb(70, 70, 201);
+            background-color: rgb(55, 55, 146);
         }
 
-        .red-txt {color:red;}
-        .blue-txt {color:blue;}
-        .bold-txt {font-weight: bold;}
-        .sub-txt {
+        .red-txt{color: red}
+        .blue-txt{color: blue}
+        .bold-txt{font-weight: bold;}
+
+        .sub-txt{
             font-size: 15px;
             margin-top: -15px;
             color: red;
@@ -94,15 +97,17 @@
     <div id="app">
         <!-- html. 반드시 id가 app인 태그 안에서 작업 -->
         <!-- (script 맨 하단 app.mount('#app'); 여기 아이디와 같아야 함) -->
+    
+        <!-- 2.여기에 추가되어야겠지 ? (+)-->
         <div id="container">
             <h1>{{info.PRODUCT_NAME}}</h1>
             <div class="product-wrap">
                 <div class="product-img">
-                    <img :src="info.IMG_PATH" id="main-img">
+                    <img :src="info.IMG_PATH" id="main-img">  <!-- 변수에서 꺼내야하니까 :src-->
                     <div id="sub-img">
-                        <img src="../media/img1.png" class="small-img">
-                        <img src="../media/img2.jpg" class="small-img">
-                        <img src="../media/img3.jpg" class="small-img">
+                        <img src="../media/실습 햄스터.jpg" class="small-img">  
+                        <img :src="info.IMG_PATH" class="small-img">
+                        <img :src="info.IMG_PATH" class="small-img">
                     </div>
                 </div>
                 <div id="desc">
@@ -113,7 +118,7 @@
                             배송비 : 30,000원
                             <div class="sub-txt">(10,000,000원 이상 주문시 무료)</div>
                         </li>
-                        <li class="blue-txt">적립금 : {{Math.round(info.PRICE * 0.01)}}원 (1%)</li>
+                        <li>적립금 : {{Math.round(info.PRICE * 0.01)}}원(1%)</li>
                         <li>모델명 : {{info.MODEL_NAME}}</li>
                         <li>설명 : {{info.DESCRIPTION}}</li>
                     </ul>
@@ -121,6 +126,7 @@
                 </div>
             </div>
         </div>
+    
     </div>
 </body>
 </html>
@@ -130,35 +136,57 @@
         data() {
             return {
                 // 변수 - (key : value)
-                productId : "",
+                productId :"",   //4
                 info : {}
             };
         },
         methods: {
             // 함수(메소드) - (key : function())
-            fnGetInfo: function () {
-                let self = this;
-                $.ajax({
+            fnGetInfo : function(){
+              let self = this;
+
+              $.ajax({    //제이쿼리로 db랑 통신
                     url: "http://192.168.30.57:3009/product/info",
                     dataType: "json",
                     type: "GET",
-                    data: {productId : self.productId},
+                    data: {productId : self.productId}, //productId : 4  //왼쪽은 db에 있는 컬럼명, 오른쪽은 내가 보내는 값
                     success: function (data) {
                         console.log(data);
+                        // => info: {PRODUCT_ID: 4, PRODUCT_NAME: '맥북 에어 M3', BRAND: '애플', CATEGORY: '노트북', MODEL_NAME: 'MBA-M3', …}
+                        //    result: "success"      ------------->  여기까지 오전수업내용임  ---------->1.  
                         self.info = data.info;
                     }
                 });
             }
+
+            // fnUserList: function () {
+            //     $.ajax({
+            //         url: "",
+            //         dataType: "json",
+            //         type: "GET",
+            //         data: {},
+            //         success: function (data) {
+
+            //         }
+            //     });
+            // }
         }, // methods
         mounted() {
             // 처음 시작할 때 실행되는 부분
-            const queryParams = new URLSearchParams(window.location.search);
-            this.productId = queryParams.get('productId') || ''; 
+
+            // console.log(window.location.search); //?productId=4
+            const queryParams = new URLSearchParams(window.location.search); //객체생성
+            // console.log(queryParams); //size:1 (쿼리파라미터 개수만큼)
+
+            this.productId = queryParams.get('productId') || '';  //undefined가 되면 빈값('') 으로 대체하겠다! // 4 || ''
+            console.log(this.productId); //4..
+
             if(this.productId == ''){
-                alert("해당 상품 없다!!");
+                alert("해당상품없다!!");
+                // window.close();
                 location.href="product-home.html";
             }
-            console.log("test ==> ", this.productId);
+
             this.fnGetInfo();
         }
     });
