@@ -6,11 +6,168 @@
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* 화면 중앙 정렬 및 배경색 */
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px; 
+        }
+
+        /* 컨테이너 */
+        #app {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            padding: 45px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        #container h2 {
+            color: #333333;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        #container p {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* 입력 필드 영역 */
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group span {
+            display: block;
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .input-group input[type='radio'] {
+
+
+
+        }
+
+        .input-group input:focus {
+            border-color: #4A90E2;
+        }
+
+        /* 버튼 */
+        .signup-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #4A90E2;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+        .signup-btn-false {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+        .signup-btn:hover {
+            background-color: #357ABD;
+        }
+
+           .bottom-links {
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+        }
+
+        .bottom-links a {
+            color: #4A90E2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .bottom-links a:hover {
+            text-decoration: underline;
+        }
+
+        .input-group button{
+            margin-left : 10px;
+        }
+        .warning-area {
+            height: 18px;
+        }
+        .input-group .warning-txt {
+            color: red;
+            font-size: 12px;
+            margin : 2px 5px;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        <!-- html. 반드시 id가 app인 태그 안에서 작업 -->
-        <!-- (script 맨 하단 app.mount('#app'); 여기 아이디와 같아야 함) -->
+        <div id="container">
+            <h2>마이페이지</h2>
+            <p>정보를 수정하세요</p>
+            
+            <div class="input-group">
+                <span>이름</span>
+                <input v-model="info.USERNAME" type="text"  placeholder="홍길동" >
+            </div>
+
+            <div class="input-group">
+                <span>아이디</span>
+                <input v-model="info.USERID" disabled type="text" placeholder="아이디를 입력해주세요.">
+            </div>
+
+            <div class="input-group">
+                <span>이메일</span>
+                <input v-model="info.EMAIL" type="text" placeholder="이메일을 입력해주세요." value="email">
+            </div>
+
+            <div>
+                <div class="input-group">
+                    <span>성별</span>
+                </div>
+                <div>
+                    <label><input  type="radio" name="gender" checked v-model="info.GENDER" value="M"> 남자</label>
+                    <label><input  type="radio"  name="gender" v-model="info.GENDER" value="F"> 여자</label>
+                </div>
+            </div>
+            
+            <button class="signup-btn" @click="fnEdit">수정하기</button> 
+        </div>
     </div>
 </body>
 </html>
@@ -20,24 +177,64 @@
         data() {
             return {
                 // 변수 - (key : value)
+                userId : "",
+                // userName: "",
+                // map : {name: "홍길동"}
+                
+                // info : {
+                //     USERID :"ZZ",
+                //     USERNAME : "ZZ",..
+                // }
+
+                info  : {}
             };
         },
         methods: {
             // 함수(메소드) - (key : function())
-            fnUserList: function () {
+            fnGetUser: function () {
+                let self = this;
+                
                 $.ajax({
-                    url: "",
+                    url: "http://192.168.30.57:3009/user/info",
                     dataType: "json",
                     type: "GET",
-                    data: {},
+                    data: {userId: self.userId},
                     success: function (data) {
+                        console.log(data);
 
+                        self.info = data.info;
+
+                        // self.userName = data.info.USERNAME;
+                        // self.email = data.info.EMAIL;
+                        // self.gender = data.info.GENDER;
+                        // self.name = data.info.USERNAME;
+                    }
+                });
+            },
+            fnEdit : function(){
+                let self = this;
+
+                $.ajax({
+                    url : "http://192.168.30.57:3009/user/edit",
+                    dataType: "json",
+                    type : "GET",
+                    data: {userid: self.info.USERID},
+                    success: function(data){
+                        console.log(data);
+
+                        data.EMAIL = self.info.EMAIL;
+                        data.GENDER = self.info.GENDER;
+                        data.USERNAME = self.info.USERNAME;
                     }
                 });
             }
         }, // methods
         mounted() {
             // 처음 시작할 때 실행되는 부분
+            const queryParams = new URLSearchParams(window.location.search); 
+            this.userId = queryParams.get('userId') || '';
+
+            this.fnGetUser();
         }
     });
 

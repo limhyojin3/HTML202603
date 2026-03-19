@@ -50,8 +50,8 @@
           <span class="badge">3</span>
         </button>
         <div class="user-profile">
-          <div class="avatar" @click="fnMypage">👨‍💻</div>
-          <span class="username" @click="fnMypage">{{sessionName}}</span>
+          <div class="avatar" @click="fnMyPage">👨‍💻</div>
+          <span class="username" @click="fnMyPage">{{sessionName}}</span>
           <button @click="fnLogout">로그아웃</button>
         </div>
       </div>
@@ -165,6 +165,10 @@
               // product-info.html
               location.href = "product-info.html?productId=" + productId;
 
+            },
+            fnMyPage : function(userId){
+              let self = this;
+              location.href = "mypage.html?userId=" + localStorage.getItem("sessionId");
             },
             fnInit: function() {
                 const swiper = new Swiper('.swiper', {
