@@ -1,0 +1,1 @@
+body{background-color:pink}body>div{display:flex;justify-content:center;align-items:center;height:100vh}h1{font-size:70px;padding:5px 25px;background-color:#fff;border-radius:20px;color:#2c356f;text-decoration:none}h1:hover{background-color:#b3b3b3;box-shadow:0 5px 15px rgba(0,0,0,.3)}a{text-decoration:none}
