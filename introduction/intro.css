@@ -1,0 +1,186 @@
+
+    #container{
+        display: flex;
+        justify-content: center;
+    }
+    #contents{
+        display: grid;
+        grid-template-columns: 250px 600px 300px;
+        grid-template-rows: 200px 50px 800px;
+        grid-template-areas: 
+        "header header header"
+        "list list list"
+        "left-side middle right-side";
+        border: 2px solid gray;
+        margin-top: 50px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px gray;
+    }
+    .list{ 
+        grid-area: list;
+        background-color: rgb(240, 235, 174);
+    }
+    .header {
+        grid-area: header;
+        background-color: rgb(240, 235, 174);
+    }
+    .left-side{
+        grid-area: left-side;
+        background-color: rgb(253, 244, 147);
+    }
+    .middle{
+        grid-area: middle;
+        padding-left: 30px;
+        background-color: white;
+    }
+    .right-side{
+        grid-area: right-side;
+        background-color: white;
+    }
+    #profile{
+        width: 150px;
+        height: 150px;
+        border-radius: 20%;
+        border:5px solid rgb(255, 255, 255);
+        background-image: url(실습\ 햄스터.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat; /* 반복 금지 */
+        
+        margin-top: 30px;
+        cursor: pointer;
+        
+    }
+    #profile:hover{
+        background-image: url(실습\ 고양이.jpg);
+    }
+    
+    #sns_button_box{
+        /* margin: 5px auto; */
+        padding-top:20px;
+    }
+
+    #sns_button_box a{
+        display: inline-block;
+        background: white;
+        color: rgb(86,86,233);
+        padding: 8px 18px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    #sns_button_box a:hover{
+        background: #dddddd;
+    }
+
+
+    table, tr, th, td{
+        border : 1px solid #ddd; /* 2px 크기의 검은색 선(solid)*/
+        border-collapse: collapse;  /* 겹치는 선을 하나로 만들어주는 속성이다*/
+        padding : 5px 20px; /* 상하 5px 좌우 20px*/
+        text-align: center;  /*가운데 정렬*/
+        margin-left:30px;
+        margin-top: 30px;
+    }
+    #edu_th{
+        background-color: rgb(255, 231, 18);
+    }
+    .title{
+        background-color: rgb(255, 246, 147);
+        display:inline-block;
+    }
+    #watch_container{
+        height: 20px auto;
+        padding: 30px;
+        text-align: center;
+    }
+
+    #time{
+        font-size: 25px;
+        font-weight: bold;
+        color: rgb(37, 37, 128);
+        
+        display: inline-block;
+        padding: 3px 5px;
+        background-color: rgb(231, 170, 255);
+        cursor: pointer;
+    }
+    #profile-card{
+        margin: 10px 10px;
+        border: 2px solid green;
+        border-radius: 10px;
+    }
+    div{
+        border: 1px solid gray;
+    }
+    .header>h1{
+        text-align: right; 
+        margin-right: 30px;
+        margin-top: 60px;
+        cursor: pointer;
+    }
+    #profile-card>div{
+        text-align: center;
+    }
+    .contact{
+        text-align: left; 
+        margin-left: 20px;
+    }
+    #sns_button_box{
+        text-align: center;
+    }
+    #profile_name{
+        background-color: #bbefff;
+        padding: 2px 3px;
+        margin: 30px 10px 0 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 0 5px gray;
+    }
+
+    #profile_name:hover{
+        background-color: rgb(123, 206, 234);
+    }
+
+    input[type="radio"]{
+        opacity: 0;
+    }
+    input[type="radio"] + label{
+        position: relative;
+        cursor: pointer;
+        border: 3px solid gray;
+        padding: 5px 20px;
+        margin-top: 10px;
+        background-color: #afd546;
+        border-radius: 5px;
+        
+    }
+    input[type="radio"] + label:hover{
+
+        background-color: #8bbe00;
+
+    }
+    .basicBtn{
+        height: 45px;
+        display: flex;
+        justify-content: center;
+    }
+    .introduce{
+        margin-top: 50px;
+    }
+    span{
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+    }
+    body{
+        background-image: url("wrtFileImageView.jpg");
+        background-size: cover; /* 이미지를 비율 유지하며 꽉 차게 */
+        background-position: center; /* 이미지 중앙 정렬 */
+        background-repeat: no-repeat; /* 반복 금지 */
+        min-height: 100vh; /* 화면 높이 전체 채우기 */
+    }
+    p>span{
+        background-color: pink;
+        border-radius: 5px;
+    }
+
