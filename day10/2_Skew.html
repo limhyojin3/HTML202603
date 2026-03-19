@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #e2ecf6;
+         }
+        #container {
+            width: 800px;
+            margin : 100px auto;
+        }
+        .box{
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+            color : white;
+            text-align: center;
+            line-height: 150px;
+            margin : 50px;
+
+            transition: transform 1s ease, background-color 1s ease;
+        }
+        .skew1{
+            transform: skewX(20deg);
+        }
+        .skew2{
+            transform: skewX(-20deg);
+        }
+        .skew3{
+            transform: skewY(20deg);
+        }
+        .skew4{
+            transform: skew(20deg, 10deg);
+        }
+        .skew5{
+            transform: skew(0deg);
+        }
+        .skew5:hover{
+            transform: skewX(30deg);
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="box skew1">Skew</div>
+        <hr>
+        <div class="box skew2">Skew</div>
+        <hr>
+        <div class="box skew3">Skew</div>
+        <hr>
+        <div class="box skew4">Skew</div>
+        <hr>
+        <div class="box skew5">Skew</div>
+        
+    </div>
+</body>
+</html>

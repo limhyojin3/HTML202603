@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #e2ecf6;
+         }
+        #container {
+            width: 800px;
+            margin : 100px auto;
+        }
+        .box{
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+            color : white;
+            text-align: center;
+            line-height: 150px;
+            margin : 50px;
+            border-radius: 10px;
+        }
+
+        @keyframes slideIn { /* 단순한 시작과 끝 */
+            0%{ /* 시작 */
+                transform: translateX(-100px); /* 왼쪽 100px 이동해 있기 */
+                opacity: 0;
+            }
+            100%{ /* 끝 */
+                transform: translateX(0); /* 제자리로 */
+                opacity: 1;
+            }
+        }
+
+        @keyframes popIn { 
+            0%{
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            60%{
+                transform: scale(1.2);
+            }
+            100%{
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes pulse { 
+            0%{
+                transform: scale(1);
+            }
+            50%{
+                transform: scale(1.2);
+                background-color: aqua;
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+
+        @keyframes spin { 
+            0%{
+                transform: translateX(-100px) rotate(0deg);
+            }
+            50%{
+                transform: translateX(100px) rotate(180deg);
+            }
+            100%{
+                transform: translateX(-100px) rotate(360deg);
+            }
+        }
+        @keyframes move {
+            0% { transform: translate(0, 0); }      /* 제자리 */
+            25% { transform: translate(100px, 0); }      /* 25%: 오른쪽으로 100px */
+            50% { transform: translate(100px, 100px); }  /* 50%: 오른쪽 아래로 */
+            75% { transform: translate(0, 100px); }      /* 75%: 아래로 */
+            100% { transform: translate(0, 0); }    /* 제자리 */
+        }
+
+        .animate1{
+            animation: slideIn 1s ease-out ;
+        }
+        .animate2{
+            animation: popIn 1s ease;
+        }
+        .animate3{
+            animation: pulse 2s linear infinite ;
+        }
+        .animate4{
+            animation: spin 3s ease-in-out infinite ;
+        }
+        .animate5 {
+            /* 3초 동안 zigzag 시나리오를 '무한' 반복 */
+            animation: move 3s ease infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="box animate1">spin</div>
+        <hr>
+        <div class="box animate2">spin</div>
+        <hr>
+        <div class="box animate3">spin</div>
+        <hr>
+        <div class="box animate4">spin</div>
+        <hr>
+        <div class="box animate5">spin</div>
+    </div>
+</body>
+</html>

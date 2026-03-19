@@ -67,16 +67,18 @@
             outline: none;
         }
 
-        .input-group input[type='radio'] {
-
-
-
-        }
-
         .input-group input:focus {
             border-color: #4A90E2;
         }
 
+        .input-group input[type='radio'] {
+            width: 5%;
+            padding: 3px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
         /* 버튼 */
         .signup-btn {
             width: 100%;
@@ -139,34 +141,29 @@
     <div id="app">
         <div id="container">
             <h2>마이페이지</h2>
-            <p>정보를 수정하세요</p>
+            <p>정보 수정하셈</p>
             
             <div class="input-group">
                 <span>이름</span>
-                <input v-model="info.USERNAME" type="text"  placeholder="홍길동" >
+                <input v-model="info.USERNAME" type="text" placeholder="홍길동">
             </div>
 
             <div class="input-group">
                 <span>아이디</span>
-                <input v-model="info.USERID" disabled type="text" placeholder="아이디를 입력해주세요.">
+                <input disabled v-model="info.USERID" class="userId" type="text" placeholder="아이디를 입력해주세요.">                
             </div>
-
             <div class="input-group">
                 <span>이메일</span>
-                <input v-model="info.EMAIL" type="text" placeholder="이메일을 입력해주세요." value="email">
+                <input type="text" v-model="info.EMAIL" placeholder="이메일을 입력해주세요.">                
+            </div>
+            <div class="input-group">
+                <span>성별</span>
+                <label><input name="gender" v-model="info.GENDER" value="M" type="radio"> 남자</label>
+                <label><input name="gender" v-model="info.GENDER" value="F" type="radio"> 여자</label>
             </div>
 
-            <div>
-                <div class="input-group">
-                    <span>성별</span>
-                </div>
-                <div>
-                    <label><input  type="radio" name="gender" checked v-model="info.GENDER" value="M"> 남자</label>
-                    <label><input  type="radio"  name="gender" v-model="info.GENDER" value="F"> 여자</label>
-                </div>
-            </div>
-            
             <button class="signup-btn" @click="fnEdit">수정하기</button> 
+            
         </div>
     </div>
 </body>
@@ -178,62 +175,50 @@
             return {
                 // 변수 - (key : value)
                 userId : "",
-                // userName: "",
-                // map : {name: "홍길동"}
-                
-                // info : {
-                //     USERID :"ZZ",
-                //     USERNAME : "ZZ",..
-                // }
-
-                info  : {}
+                info : {}
             };
         },
         methods: {
             // 함수(메소드) - (key : function())
             fnGetUser: function () {
                 let self = this;
-                
                 $.ajax({
                     url: "http://192.168.30.57:3009/user/info",
                     dataType: "json",
                     type: "GET",
-                    data: {userId: self.userId},
+                    data: {userId : self.userId},
                     success: function (data) {
                         console.log(data);
-
                         self.info = data.info;
-
-                        // self.userName = data.info.USERNAME;
-                        // self.email = data.info.EMAIL;
-                        // self.gender = data.info.GENDER;
-                        // self.name = data.info.USERNAME;
+                        
                     }
                 });
             },
             fnEdit : function(){
                 let self = this;
-
+                let param = {
+                    name : self.info.USERNAME,
+                    userId : self.info.USERID,
+                    email : self.info.EMAIL,
+                    gender : self.info.GENDER
+                };
                 $.ajax({
-                    url : "http://192.168.30.57:3009/user/edit",
+                    url: "http://192.168.30.57:3009/user/edit",
                     dataType: "json",
-                    type : "GET",
-                    data: {userid: self.info.USERID},
-                    success: function(data){
-                        console.log(data);
-
-                        data.EMAIL = self.info.EMAIL;
-                        data.GENDER = self.info.GENDER;
-                        data.USERNAME = self.info.USERNAME;
+                    type: "GET",
+                    data: param,
+                    success: function (data) {
+                        alert(data.message);
+                        localStorage.setItem("sessionName", self.info.USERNAME);
+                        location.href="product-home.html";
                     }
                 });
             }
         }, // methods
         mounted() {
             // 처음 시작할 때 실행되는 부분
-            const queryParams = new URLSearchParams(window.location.search); 
-            this.userId = queryParams.get('userId') || '';
-
+            const queryParams = new URLSearchParams(window.location.search);
+            this.userId = queryParams.get('userId') || ''; 
             this.fnGetUser();
         }
     });
