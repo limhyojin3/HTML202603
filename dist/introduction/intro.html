@@ -148,31 +148,6 @@
 <script>
     // alert("welcome!");
 
-    setInterval(()=>{             // setInterval => 정해진시간마다 반복되어 갱신됨
-        let datetime = new Date();
-        let obj = document.querySelector("#time");
-
-        let minutes = datetime.getMinutes();
-        let seconds = datetime.getSeconds();
-        
-
-        if (datetime.getMinutes() < 10) {
-            minutes = "0" + datetime.getMinutes();
-        }
-        
-        if (datetime.getSeconds() < 10) {
-            seconds = "0" + datetime.getSeconds();
-        } 
-        
-
-        let time = datetime.getHours() + " : "
-                    + minutes + " : "
-                    + seconds;
-
-        obj.innerHTML = time;
-    }, 1000); //1초마다 반복하여 갱신
-
-    
     const app = Vue.createApp({
         data() {
             return {
@@ -191,6 +166,30 @@
         }, // methods
         mounted() {
             // 처음 시작할 때 실행되는 부분
+            
+            setInterval(()=>{             // setInterval => 정해진시간마다 반복되어 갱신됨
+                let datetime = new Date();
+                let obj = document.querySelector("#time");
+
+                let minutes = datetime.getMinutes();
+                let seconds = datetime.getSeconds();
+                
+
+                if (datetime.getMinutes() < 10) {
+                    minutes = "0" + datetime.getMinutes();
+                }
+                
+                if (datetime.getSeconds() < 10) {
+                    seconds = "0" + datetime.getSeconds();
+                } 
+                
+
+                let time = datetime.getHours() + " : "
+                            + minutes + " : "
+                            + seconds;
+
+                obj.innerHTML = time;
+            }, 1000); //1초마다 반복하여 갱신
         }
     });
 
