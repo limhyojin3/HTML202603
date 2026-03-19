@@ -6,6 +6,7 @@
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- <link rel="stylesheet" href="intro.css"> -->
     <style>
         #container{
             display: flex;
@@ -44,6 +45,7 @@
         .right-side{
             grid-area: right-side;
             background-color: white;
+            border-left: 2px dashed #8bbe00;
         }
         #profile{
             width: 150px;
@@ -110,7 +112,7 @@
             
             display: inline-block;
             padding: 3px 5px;
-            background-color: rgb(231, 170, 255);
+            background-color: rgb(233, 220, 238);
             cursor: pointer;
         }
         #profile-card{
@@ -118,9 +120,9 @@
             border: 2px solid green;
             border-radius: 10px;
         }
-        div{
+        /* div{
             border: 1px solid gray;
-        }
+        } */
         .header>h1{
             text-align: right; 
             margin-right: 30px;
@@ -199,7 +201,7 @@
         <div id="contents">
             <div class="header">
                 
-                <h1 @click="fnAlert">자기소개페이지</h1>
+                <h1 @click="fnAlert">자기소개 페이지</h1>
             </div>
             <div class="list">
                 <div class="basicBtn">

@@ -102,7 +102,7 @@
         
         display: inline-block;
         padding: 3px 5px;
-        background-color: rgb(233, 220, 238);
+        background-color: rgb(231, 170, 255);
         cursor: pointer;
     }
     #profile-card{
@@ -110,9 +110,9 @@
         border: 2px solid green;
         border-radius: 10px;
     }
-    /* div{
+    div{
         border: 1px solid gray;
-    } */
+    }
     .header>h1{
         text-align: right; 
         margin-right: 30px;

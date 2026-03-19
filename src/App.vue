@@ -7,6 +7,6 @@
 </template>
 
 <style>
-/* 아까 만드신 CSS 부분을 여기에 넣으세요 */
+/*  CSS 부분을 여기에 넣거나 assets폴더의 style.css를 import 하기! */
     @import "./assets/welcome.css";
 </style>
