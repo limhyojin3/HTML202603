@@ -11,7 +11,7 @@
         "header header header"
         "list list list"
         "left-side middle right-side";
-        border: 2px solid gray;
+        border: 11px dotted rgb(255, 171, 36);
         margin-top: 50px;
         border-radius: 10px;
         box-shadow: 2px 2px 10px gray;
@@ -23,6 +23,7 @@
     .header {
         grid-area: header;
         background-color: rgb(240, 235, 174);
+        border-bottom: 2px dashed rgb(4, 4, 132);
     }
     .left-side{
         grid-area: left-side;
@@ -125,6 +126,7 @@
         margin-right: 30px;
         margin-top: 60px;
         cursor: pointer;
+        color: rgb(36, 92, 7);
     }
     #profile-card>div{
         text-align: center;
