@@ -8,5 +8,5 @@
 
 <style>
 /* 아까 만드신 CSS 부분을 여기에 넣으세요 */
-    @import "./assets/welcome.css"
+    @import "./assets/welcome.css";
 </style>
