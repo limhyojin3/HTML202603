@@ -5,8 +5,8 @@
     }
     #contents{
         display: grid;
-        grid-template-columns: 250px 600px 300px;
-        grid-template-rows: 200px 50px 800px;
+        grid-template-columns: 5fr 12fr 6fr;
+        grid-template-rows: 4fr 1fr 16fr;
         grid-template-areas: 
         "header header header"
         "list list list"
